@@ -13,10 +13,9 @@ export const ADDRESS = {
   locality: "Salcedo",
   region: "Cotopaxi",
   country: "EC",
-  // coordenadas del centro de San Miguel de Salcedo; ajustar a la ubicación exacta
-  // del edificio cuando se verifique el perfil de Google Business.
-  lat: -1.0455,
-  lng: -78.5906,
+  // ubicación exacta del Edificio Vecamores segun Google Maps
+  lat: -1.0420674,
+  lng: -78.5913327,
 };
 
 export const services = [
