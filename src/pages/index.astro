@@ -43,27 +43,154 @@ const navLinks = [
   { href: "#equipo", label: "Equipo" },
   { href: "#clientes", label: "Clientes" },
 ];
+
+/* contacto */
+const PHONE = "+593995516608";
+const PHONE_HUMAN = "+593 99 551 6608";
+const wa = (msg) => `https://wa.me/593995516608?text=${encodeURIComponent(msg)}`;
+const WA_GENERAL = wa("Hola, quiero que me asesoren sobre mi caso.");
+const WA_CONSULTA = wa("Hola, quiero agendar una consulta con Virtus Estudio Jurídico.");
+const WA_EMPRESA = wa("Hola, quiero solicitar una propuesta de asesoría legal para mi empresa.");
+
+/* seo */
+const SITE = "https://virtusestudiojuridico.com";
+const TITLE = "Abogados en Salcedo, Ecuador — Virtus Estudio Jurídico";
+const DESCRIPTION =
+  "Estudio jurídico en Salcedo, Cotopaxi. Asesoría, prevención y patrocinio legal en materia civil, penal, laboral, familiar, corporativa y digital. Urgencias 24/7 por WhatsApp.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LegalService",
+      "@id": `${SITE}/#estudio`,
+      name: "Virtus Estudio Jurídico",
+      description: DESCRIPTION,
+      url: SITE,
+      logo: `${SITE}/logo-virtus.jpg`,
+      image: `${SITE}/og.jpg`,
+      telephone: PHONE,
+      slogan: "Justicia · Compromiso · Confianza",
+      knowsLanguage: "es",
+      currenciesAccepted: "USD",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Bolívar y C. Belisario Quevedo, Edificio Vecamores (frente a la Judicatura de Salcedo)",
+        addressLocality: "Salcedo",
+        addressRegion: "Cotopaxi",
+        addressCountry: "EC",
+      },
+      areaServed: { "@type": "Country", name: "Ecuador" },
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          opens: "00:00",
+          closes: "23:59",
+          description: "Atención de urgencias las 24 horas por WhatsApp",
+        },
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        telephone: PHONE,
+        availableLanguage: "Spanish",
+        areaServed: "EC",
+        hoursAvailable: {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          opens: "00:00",
+          closes: "23:59",
+        },
+      },
+      employee: team.map((m) => ({
+        "@type": "Person",
+        name: m.name,
+        jobTitle: "Abogado",
+        knowsAbout: m.focus,
+        worksFor: { "@id": `${SITE}/#estudio` },
+      })),
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Áreas de práctica",
+        itemListElement: services.map((s) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: s.name, provider: { "@id": `${SITE}/#estudio` } },
+        })),
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
+      url: SITE,
+      name: "Virtus Estudio Jurídico",
+      inLanguage: "es-EC",
+      publisher: { "@id": `${SITE}/#estudio` },
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${SITE}/#webpage`,
+      url: `${SITE}/`,
+      name: TITLE,
+      description: DESCRIPTION,
+      inLanguage: "es-EC",
+      isPartOf: { "@id": `${SITE}/#website` },
+      about: { "@id": `${SITE}/#estudio` },
+      primaryImageOfPage: `${SITE}/og.jpg`,
+    },
+  ],
+};
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es-EC">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Virtus Estudio Jurídico — Asesoría, prevención y patrocinio legal</title>
-  <meta name="description" content="Firma jurídica multidisciplinaria en Salcedo, Ecuador. Asesoría estratégica, prevención y patrocinio legal para personas, empresas y organizaciones." />
+  <title>{TITLE}</title>
+  <meta name="description" content={DESCRIPTION} />
+  <link rel="canonical" href={`${SITE}/`} />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="author" content="Virtus Estudio Jurídico" />
+  <meta name="theme-color" content="#4a0e16" />
+  <meta name="geo.region" content="EC-X" />
+  <meta name="geo.placename" content="Salcedo, Cotopaxi, Ecuador" />
+
+  <!-- open graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Virtus Estudio Jurídico" />
+  <meta property="og:title" content={TITLE} />
+  <meta property="og:description" content={DESCRIPTION} />
+  <meta property="og:url" content={`${SITE}/`} />
+  <meta property="og:locale" content="es_EC" />
+  <meta property="og:image" content={`${SITE}/og.jpg`} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Virtus Estudio Jurídico — abogados en Salcedo, Ecuador" />
+
+  <!-- twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={TITLE} />
+  <meta name="twitter:description" content={DESCRIPTION} />
+  <meta name="twitter:image" content={`${SITE}/og.jpg`} />
+
+  <!-- iconos -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.pexels.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
 </head>
 <body>
   <header class="site-header">
     <div class="wrap header-row">
       <a href="#top" class="brand">
-        <svg class="brand-mark" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true">
-          <rect x="0.5" y="0.5" width="43" height="43" fill="#4a0e16" stroke="rgba(217,178,106,0.4)" />
-          <text x="22" y="29" text-anchor="middle" font-family="Cinzel, serif" font-size="20" fill="#e4c07f">V</text>
-        </svg>
+        <img class="brand-mark" src="/logo-mark.png" width="44" height="44" alt="Virtus Estudio Jurídico" />
         <span class="brand-text">
           <span class="brand-name">VIRTUS</span>
           <span class="brand-sub">Estudio Jurídico</span>
@@ -86,6 +213,7 @@ const navLinks = [
     </nav>
   </header>
 
+  <main>
   <section id="top" class="hero">
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="wrap hero-grid">
@@ -94,13 +222,14 @@ const navLinks = [
         <h1>Asesoría estratégica, <em>prevención</em> y patrocinio legal.</h1>
         <p class="lead">Firma jurídica multidisciplinaria para personas, empresas y organizaciones. Integramos distintas áreas del Derecho en soluciones coordinadas y adaptadas a cada caso.</p>
         <div class="btn-row">
-          <a href="#contacto" class="btn btn-gold">Agendar consulta</a>
+          <a href={WA_CONSULTA} target="_blank" rel="noopener" class="btn btn-gold">Agendar consulta</a>
           <a href="#servicios" class="btn btn-outline">Ver servicios</a>
         </div>
+        <p class="hero-urgencias">Atención de urgencias 24/7 por WhatsApp · {PHONE_HUMAN}</p>
       </div>
       <div class="hero-img-wrap">
         <div class="hero-img-frame" aria-hidden="true"></div>
-        <img src="https://images.pexels.com/photos/7875863/pexels-photo-7875863.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Abogada revisando documentos legales en el estudio" class="hero-img" />
+        <img src="https://images.pexels.com/photos/7875863/pexels-photo-7875863.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Abogada de Virtus Estudio Jurídico revisando documentos legales" class="hero-img" fetchpriority="high" decoding="async" />
       </div>
     </div>
   </section>
@@ -127,7 +256,7 @@ const navLinks = [
       <div>
         <span class="kicker">NUESTRO ENFOQUE</span>
         <div class="rule"></div>
-        <img src="https://images.pexels.com/photos/8439654/pexels-photo-8439654.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Asesoría legal a un cliente" class="enfoque-img" />
+        <img src="https://images.pexels.com/photos/8439654/pexels-photo-8439654.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Asesoría legal a un cliente en Salcedo" class="enfoque-img" loading="lazy" decoding="async" />
       </div>
       <div>
         <p class="enfoque-statement">Integramos distintas áreas del Derecho para brindar soluciones jurídicas coordinadas, estratégicas y adaptadas a las necesidades de cada cliente.</p>
@@ -173,7 +302,7 @@ const navLinks = [
   </section>
 
   <section class="quote">
-    <img src="https://images.pexels.com/photos/5668882/pexels-photo-5668882.jpeg?auto=compress&cs=tinysrgb&w=1900" alt="Balanza de la justicia y mazo sobre libros de derecho" class="quote-img" />
+    <img src="https://images.pexels.com/photos/5668882/pexels-photo-5668882.jpeg?auto=compress&cs=tinysrgb&w=1900" alt="Balanza de la justicia y mazo sobre libros de derecho" class="quote-img" loading="lazy" decoding="async" />
     <div class="quote-overlay" aria-hidden="true"></div>
     <div class="wrap quote-content">
       <div class="rule rule-gold"></div>
@@ -210,7 +339,7 @@ const navLinks = [
         <span class="kicker">CLIENTES EMPRESARIALES</span>
         <div class="rule"></div>
         <p class="clientes-desc">Acompañamiento legal continuo a negocios de Latacunga y Salcedo en materia contractual, laboral y de marcas.</p>
-        <img src="https://images.pexels.com/photos/8112180/pexels-photo-8112180.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Firma de un contrato empresarial" class="clientes-img" />
+        <img src="https://images.pexels.com/photos/8112180/pexels-photo-8112180.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Firma de un contrato empresarial con asesoría de Virtus" class="clientes-img" loading="lazy" decoding="async" />
       </div>
       <div class="clientes-list">
         {clients.map((c) => (
@@ -219,7 +348,7 @@ const navLinks = [
             <span class="cliente-city">{c.city}</span>
           </div>
         ))}
-        <a href="#contacto" class="cliente-cta">
+        <a href={WA_EMPRESA} target="_blank" rel="noopener" class="cliente-cta">
           <span>¿Su empresa?</span>
           <span class="cliente-cta-label">Solicitar propuesta</span>
         </a>
@@ -233,10 +362,19 @@ const navLinks = [
         <h2 class="h-light">Conversemos sobre su caso.</h2>
         <p class="contacto-lead">Primera reunión de valoración para entender el asunto, los plazos y la estrategia adecuada.</p>
         <div class="btn-row">
-          <a href="mailto:contacto@virtusestudiojuridico.com" class="btn btn-gold">Escribir al estudio</a>
+          <a href={WA_GENERAL} target="_blank" rel="noopener" class="btn btn-gold">Escribir por WhatsApp</a>
+          <a href={`tel:${PHONE}`} class="btn btn-outline">Llamar ahora</a>
         </div>
       </div>
       <div class="contacto-info">
+        <div>
+          <div class="info-label">WhatsApp y teléfono</div>
+          <p><a class="info-link" href={`tel:${PHONE}`}>{PHONE_HUMAN}</a></p>
+        </div>
+        <div>
+          <div class="info-label">Disponibilidad</div>
+          <p>Urgencias 24/7<br />Consultas ordinarias en horario de oficina</p>
+        </div>
         <div>
           <div class="info-label">Oficina</div>
           <p>Salcedo, Edificio Vecamores<br />frente a la Judicatura de Salcedo</p>
@@ -251,22 +389,30 @@ const navLinks = [
         </div>
       </div>
     </div>
+  </section>
+  </main>
+
+  <footer class="site-footer">
     <div class="wrap footer-row">
       <div class="footer-brand">
-        <svg width="38" height="38" viewBox="0 0 44 44" aria-hidden="true">
-          <rect x="0.5" y="0.5" width="43" height="43" fill="#4a0e16" stroke="rgba(217,178,106,0.35)" />
-          <text x="22" y="29" text-anchor="middle" font-family="Cinzel, serif" font-size="20" fill="#e4c07f">V</text>
-        </svg>
+        <img src="/logo-mark.png" width="38" height="38" alt="" loading="lazy" />
         <span>VIRTUS ESTUDIO JURÍDICO</span>
       </div>
       <div class="footer-tag">JUSTICIA · COMPROMISO · CONFIANZA</div>
     </div>
-  </section>
+  </footer>
 
   <div class="cta-bar" id="cta-bar">
-    <a href="tel:+593000000000">Llamar</a>
-    <a href="https://wa.me/593000000000" target="_blank" rel="noopener">WhatsApp</a>
+    <a href={`tel:${PHONE}`}>Llamar</a>
+    <a href={WA_GENERAL} target="_blank" rel="noopener">WhatsApp</a>
   </div>
+
+  <!-- ponytail: la cta-bar se oculta en desktop, este flotante cubre ese hueco -->
+  <a class="wa-float" href={WA_GENERAL} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.64 4.19 3.7.59.25 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/>
+    </svg>
+  </a>
 
   <script>
     const menuBtn = document.getElementById("menu-btn");
@@ -360,7 +506,8 @@ const navLinks = [
     .site-header { position: sticky; top: 0; z-index: 60; background: var(--maroon-700); border-bottom: 1px solid rgba(217,178,106,0.28); }
     .header-row { padding: 12px 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .brand { display: flex; align-items: center; gap: 12px; }
-    .brand-mark { flex-shrink: 0; }
+    .brand-mark { flex-shrink: 0; display: block; }
+    .footer-brand img { display: block; }
     .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
     .brand-name { font-family: Cinzel, serif; font-size: 16px; letter-spacing: 0.2em; color: var(--gold-400); }
     .brand-sub { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(251,249,246,0.55); margin-top: 3px; }
@@ -385,6 +532,7 @@ const navLinks = [
     .hero h1 { font-size: 34px; line-height: 1.18; text-wrap: balance; }
     .hero h1 em { font-style: normal; color: var(--gold-400); }
     .lead { font-size: 16px; line-height: 1.65; color: rgba(251,249,246,0.78); margin: 18px 0 0; max-width: 30em; }
+    .hero-urgencias { margin: 18px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: rgba(217,178,106,0.85); }
     .hero-img-wrap { position: relative; margin-top: 26px; }
     .hero-img-frame { display: none; }
     .hero-img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; filter: saturate(0.72) contrast(1.05) brightness(0.95); }
@@ -457,13 +605,16 @@ const navLinks = [
     .cliente-cta-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(251,249,246,0.7); }
 
     /* contacto */
-    .contacto { background: var(--maroon-800); color: var(--cream-50); padding: 52px 0 110px; border-top: 1px solid rgba(217,178,106,0.22); }
+    .contacto { background: var(--maroon-800); color: var(--cream-50); padding: 52px 0 0; border-top: 1px solid rgba(217,178,106,0.22); }
+    .site-footer { background: var(--maroon-800); color: var(--cream-50); padding: 0 0 110px; }
     .contacto-grid { display: grid; gap: 40px; }
     .contacto h2 { font-size: 28px; line-height: 1.25; }
     .contacto-lead { font-size: 16px; line-height: 1.7; color: rgba(251,249,246,0.75); margin: 16px 0 0; }
     .contacto-info { display: grid; gap: 24px; padding: 30px 0; border-bottom: 1px solid rgba(217,178,106,0.22); }
     .info-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(217,178,106,0.8); }
     .contacto-info p { font-size: 16px; line-height: 1.55; margin: 8px 0 0; }
+    .info-link { color: var(--gold-400); border-bottom: 1px solid rgba(217,178,106,0.4); }
+    .info-link:hover { color: var(--cream-50); }
     .footer-row { padding-top: 26px; display: grid; gap: 16px; justify-items: center; text-align: center; }
     .footer-brand { display: flex; align-items: center; gap: 10px; }
     .footer-brand span { font-family: Cinzel, serif; font-size: 12px; letter-spacing: 0.2em; color: var(--gold-400); }
@@ -483,6 +634,9 @@ const navLinks = [
     .cta-bar a:last-child { color: var(--maroon-700); background: var(--gold-500); }
     body { padding-bottom: 58px; }
 
+    .wa-float { display: none; }
+
+
     /* ===== desktop breakpoint ===== */
     @media (min-width: 860px) {
       .wrap { padding: 0 32px; }
@@ -491,6 +645,15 @@ const navLinks = [
       .nav-desktop a:not(.btn) { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(251,249,246,0.8); }
       .nav-desktop a:not(.btn):hover { color: var(--gold-400); }
       .menu-btn, .nav-mobile, .cta-bar { display: none; }
+      .wa-float {
+        display: flex; position: fixed; right: 28px; bottom: 28px; z-index: 70;
+        width: 60px; height: 60px; border-radius: 50%;
+        align-items: center; justify-content: center;
+        background: var(--gold-500); color: var(--maroon-700);
+        box-shadow: 0 8px 24px rgba(45,7,12,0.35);
+        transition: background 0.2s, transform 0.2s;
+      }
+      .wa-float:hover { background: var(--gold-400); color: var(--maroon-700); transform: translateY(-2px); }
       body { padding-bottom: 0; }
 
       .hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: 72px; align-items: center; padding: 116px 32px 104px; }
@@ -533,7 +696,8 @@ const navLinks = [
       .clientes { padding: 96px 0; }
       .clientes-grid { grid-template-columns: 0.8fr 1.2fr; gap: 80px; align-items: center; }
 
-      .contacto { padding: 96px 0 64px; }
+      .contacto { padding: 96px 0 0; }
+      .site-footer { padding-bottom: 64px; }
       .contacto-grid { grid-template-columns: 1.1fr 0.9fr; gap: 80px; }
       .contacto h2 { font-size: 40px; }
       .contacto-lead { font-size: 17px; max-width: 28em; }

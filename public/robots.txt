@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://virtusestudiojuridico.com/sitemap.xml

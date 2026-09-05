@@ -1,0 +1,14 @@
+{
+  "name": "Virtus Estudio Jurídico",
+  "short_name": "Virtus",
+  "description": "Estudio jurídico en Salcedo, Ecuador. Asesoría, prevención y patrocinio legal.",
+  "lang": "es-EC",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2d070c",
+  "theme_color": "#4a0e16",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
