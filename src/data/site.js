@@ -1,4 +1,4 @@
-export const SITE = "https://virtusestudiojuridico.com";
+export const SITE = "https://www.virtusestudiojuridico.com";
 export const NAME = "Virtus Estudio Jurídico";
 export const PHONE = "+593995516608";
 export const PHONE_HUMAN = "+593 99 551 6608";
