@@ -1,226 +1,47 @@
 ---
-const services = [
-  "Asesoría y consultoría jurídica",
-  "Patrocinio judicial y litigio",
-  "Derecho Civil y obligaciones",
-  "Contratos y negociación contractual",
-  "Recuperación y cobro de cartera",
-  "Incumplimiento de obligaciones y procesos ejecutivos",
-  "Responsabilidad civil e indemnizaciones",
-  "Arrendamientos y conflictos contractuales",
-  "Derecho de Familia y sucesiones",
-  "Derecho Laboral",
-  "Derecho Penal y defensa técnica",
-  "Derecho Administrativo",
-  "Constitución y asesoría empresarial",
-  "Propiedad Intelectual y registro de marcas",
-  "Protección de Datos Personales",
-  "Derecho Digital",
-  "Asesoría a extranjeros y asuntos internacionales",
-  "Prevención y gestión de riesgos legales",
-].map((name, i) => ({ name, num: String(i + 1).padStart(2, "0") }));
+import Base from "../layouts/Base.astro";
+import {
+  services, SERVICES_INITIAL, team, clients,
+  PHONE, PHONE_HUMAN, WA_GENERAL, WA_CONSULTA, WA_EMPRESA,
+} from "../data/site.js";
+import { ciudades, materias } from "../data/paginas.js";
 
-const SERVICES_INITIAL = 8;
+const title = "Abogados en Cotopaxi — Virtus Estudio Jurídico | Salcedo";
+const description =
+  "Abogados en Cotopaxi con oficina en Salcedo, frente a la Judicatura. Derecho penal, laboral, civil, familia, cobranzas y marcas en Salcedo, Latacunga y Ambato. Urgencias 24/7.";
 
-const team = [
-  { name: "Juan Semblantes", slug: "semblantes", focus: "Derecho Procesal, Laboral, Protección de Datos y Derecho Digital." },
-  { name: "Vinicio Ortiz", slug: "ortiz", focus: "Derecho Penal, Litigios y Derecho Laboral, con enfoque en defensa y patrocinio judicial." },
-  { name: "Aylin Constante", slug: "constante", focus: "Propiedad Intelectual, Marcas y Derecho Internacional, con experiencia en asesoría a clientes extranjeros." },
-  { name: "Hernán Naranjo", slug: "naranjo", focus: "Derecho Civil, Contratos, Derecho Administrativo y asuntos patrimoniales." },
+const faq = [
+  {
+    q: "¿Dónde están ubicados?",
+    a: "En Salcedo, Cotopaxi: Bolívar y C. Belisario Quevedo, Edificio Vecamores, frente a la Judicatura de Salcedo. Atendemos casos en todo Cotopaxi y a nivel nacional.",
+  },
+  {
+    q: "¿Cómo agendo una consulta?",
+    a: "Por WhatsApp al +593 99 551 6608. Se revisa brevemente el asunto, se define si requiere reunión presencial y se agenda.",
+  },
+  {
+    q: "¿Atienden urgencias fuera de horario?",
+    a: "Sí. Detenciones, flagrancias y medidas urgentes se atienden 24/7 por WhatsApp. Las consultas ordinarias se atienden en horario de oficina.",
+  },
+  {
+    q: "¿Qué áreas del Derecho cubren?",
+    a: "Penal, laboral, civil y contratos, familia y sucesiones, administrativo, societario, propiedad intelectual, protección de datos y derecho digital, además de cobro de cartera.",
+  },
+  {
+    q: "¿Trabajan con empresas?",
+    a: "Sí. Damos acompañamiento continuo a negocios de Salcedo, Latacunga y Ambato en materia contractual, laboral, de cobranzas y de marcas.",
+  },
 ];
-
-const clients = [
-  { name: "Asadero El Leñador", city: "Latacunga" },
-  { name: "Asadero El Leñador", city: "Salcedo" },
-  { name: "All Brazas", city: "Salcedo" },
-  { name: "Panadería El Lojanito", city: "Salcedo" },
-  { name: "Zetta Aros y Llantas", city: "Salcedo" },
-];
-
-const navLinks = [
-  { href: "#enfoque", label: "Enfoque" },
-  { href: "#servicios", label: "Servicios" },
-  { href: "#equipo", label: "Equipo" },
-  { href: "#clientes", label: "Clientes" },
-];
-
-/* contacto */
-const PHONE = "+593995516608";
-const PHONE_HUMAN = "+593 99 551 6608";
-const wa = (msg) => `https://wa.me/593995516608?text=${encodeURIComponent(msg)}`;
-const WA_GENERAL = wa("Hola, quiero que me asesoren sobre mi caso.");
-const WA_CONSULTA = wa("Hola, quiero agendar una consulta con Virtus Estudio Jurídico.");
-const WA_EMPRESA = wa("Hola, quiero solicitar una propuesta de asesoría legal para mi empresa.");
-
-/* seo */
-const SITE = "https://virtusestudiojuridico.com";
-const TITLE = "Abogados en Salcedo, Ecuador — Virtus Estudio Jurídico";
-const DESCRIPTION =
-  "Estudio jurídico en Salcedo, Cotopaxi. Asesoría, prevención y patrocinio legal en materia civil, penal, laboral, familiar, corporativa y digital. Urgencias 24/7 por WhatsApp.";
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "LegalService",
-      "@id": `${SITE}/#estudio`,
-      name: "Virtus Estudio Jurídico",
-      description: DESCRIPTION,
-      url: SITE,
-      logo: `${SITE}/logo-virtus.jpg`,
-      image: `${SITE}/og.jpg`,
-      telephone: PHONE,
-      slogan: "Justicia · Compromiso · Confianza",
-      knowsLanguage: "es",
-      currenciesAccepted: "USD",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Bolívar y C. Belisario Quevedo, Edificio Vecamores (frente a la Judicatura de Salcedo)",
-        addressLocality: "Salcedo",
-        addressRegion: "Cotopaxi",
-        addressCountry: "EC",
-      },
-      areaServed: { "@type": "Country", name: "Ecuador" },
-      openingHoursSpecification: [
-        {
-          "@type": "OpeningHoursSpecification",
-          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          opens: "00:00",
-          closes: "23:59",
-          description: "Atención de urgencias las 24 horas por WhatsApp",
-        },
-      ],
-      contactPoint: {
-        "@type": "ContactPoint",
-        contactType: "customer service",
-        telephone: PHONE,
-        availableLanguage: "Spanish",
-        areaServed: "EC",
-        hoursAvailable: {
-          "@type": "OpeningHoursSpecification",
-          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          opens: "00:00",
-          closes: "23:59",
-        },
-      },
-      employee: team.map((m) => ({
-        "@type": "Person",
-        name: m.name,
-        jobTitle: "Abogado",
-        knowsAbout: m.focus,
-        worksFor: { "@id": `${SITE}/#estudio` },
-      })),
-      hasOfferCatalog: {
-        "@type": "OfferCatalog",
-        name: "Áreas de práctica",
-        itemListElement: services.map((s) => ({
-          "@type": "Offer",
-          itemOffered: { "@type": "Service", name: s.name, provider: { "@id": `${SITE}/#estudio` } },
-        })),
-      },
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${SITE}/#website`,
-      url: SITE,
-      name: "Virtus Estudio Jurídico",
-      inLanguage: "es-EC",
-      publisher: { "@id": `${SITE}/#estudio` },
-    },
-    {
-      "@type": "WebPage",
-      "@id": `${SITE}/#webpage`,
-      url: `${SITE}/`,
-      name: TITLE,
-      description: DESCRIPTION,
-      inLanguage: "es-EC",
-      isPartOf: { "@id": `${SITE}/#website` },
-      about: { "@id": `${SITE}/#estudio` },
-      primaryImageOfPage: `${SITE}/og.jpg`,
-    },
-  ],
-};
 ---
 
-<!doctype html>
-<html lang="es-EC">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{TITLE}</title>
-  <meta name="description" content={DESCRIPTION} />
-  <link rel="canonical" href={`${SITE}/`} />
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-  <meta name="author" content="Virtus Estudio Jurídico" />
-  <meta name="theme-color" content="#4a0e16" />
-  <meta name="geo.region" content="EC-X" />
-  <meta name="geo.placename" content="Salcedo, Cotopaxi, Ecuador" />
-
-  <!-- open graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Virtus Estudio Jurídico" />
-  <meta property="og:title" content={TITLE} />
-  <meta property="og:description" content={DESCRIPTION} />
-  <meta property="og:url" content={`${SITE}/`} />
-  <meta property="og:locale" content="es_EC" />
-  <meta property="og:image" content={`${SITE}/og.jpg`} />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Virtus Estudio Jurídico — abogados en Salcedo, Ecuador" />
-
-  <!-- twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={TITLE} />
-  <meta name="twitter:description" content={DESCRIPTION} />
-  <meta name="twitter:image" content={`${SITE}/og.jpg`} />
-
-  <!-- iconos -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://images.pexels.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
-
-  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
-</head>
-<body>
-  <header class="site-header">
-    <div class="wrap header-row">
-      <a href="#top" class="brand">
-        <img class="brand-mark" src="/logo-mark.png" width="44" height="44" alt="Virtus Estudio Jurídico" />
-        <span class="brand-text">
-          <span class="brand-name">VIRTUS</span>
-          <span class="brand-sub">Estudio Jurídico</span>
-        </span>
-      </a>
-
-      <nav class="nav-desktop">
-        {navLinks.map((l) => <a href={l.href}>{l.label}</a>)}
-        <a href="#contacto" class="btn btn-gold">Contacto</a>
-      </nav>
-
-      <button id="menu-btn" class="menu-btn" aria-label="Menú" aria-expanded="false" aria-controls="nav-mobile">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <nav id="nav-mobile" class="nav-mobile" hidden>
-      {navLinks.map((l) => <a href={l.href}>{l.label}</a>)}
-      <a href="#contacto" class="nav-mobile-cta">Contacto</a>
-    </nav>
-  </header>
-
-  <main>
+<Base title={title} description={description} path="/" faq={faq}>
   <section id="top" class="hero">
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="wrap hero-grid">
       <div>
-        <div class="eyebrow"><span class="eyebrow-line"></span>SALCEDO · ECUADOR</div>
-        <h1>Asesoría estratégica, <em>prevención</em> y patrocinio legal.</h1>
-        <p class="lead">Firma jurídica multidisciplinaria para personas, empresas y organizaciones. Integramos distintas áreas del Derecho en soluciones coordinadas y adaptadas a cada caso.</p>
+        <div class="eyebrow"><span class="eyebrow-line"></span>ABOGADOS EN SALCEDO · COTOPAXI</div>
+        <h1>Asesoría estratégica, <em>prevención</em> y patrocinio legal en Cotopaxi.</h1>
+        <p class="lead">Estudio jurídico multidisciplinario con oficina en Salcedo, frente a la Judicatura. Patrocinamos casos en Salcedo, Latacunga, Ambato y a nivel nacional, integrando distintas áreas del Derecho en una sola estrategia.</p>
         <div class="btn-row">
           <a href={WA_CONSULTA} target="_blank" rel="noopener" class="btn btn-gold">Agendar consulta</a>
           <a href="#servicios" class="btn btn-outline">Ver servicios</a>
@@ -285,7 +106,7 @@ const jsonLd = {
           <span class="kicker">SERVICIOS JURÍDICOS</span>
           <h2>Áreas de práctica</h2>
         </div>
-        <p class="servicios-desc">Cobertura completa en materia civil, penal, laboral, administrativa, corporativa y digital.</p>
+        <p class="servicios-desc">Cobertura completa en materia civil, penal, laboral, administrativa, corporativa y digital para clientes de Cotopaxi y todo el Ecuador.</p>
       </div>
       <div class="services-grid" id="services-grid" data-expanded="false">
         {services.map((s, i) => (
@@ -338,7 +159,7 @@ const jsonLd = {
       <div>
         <span class="kicker">CLIENTES EMPRESARIALES</span>
         <div class="rule"></div>
-        <p class="clientes-desc">Acompañamiento legal continuo a negocios de Latacunga y Salcedo en materia contractual, laboral y de marcas.</p>
+        <p class="clientes-desc">Acompañamiento legal continuo a negocios de Salcedo y Latacunga en materia contractual, laboral, de cobranzas y de marcas.</p>
         <img src="https://images.pexels.com/photos/8112180/pexels-photo-8112180.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Firma de un contrato empresarial con asesoría de Virtus" class="clientes-img" loading="lazy" decoding="async" />
       </div>
       <div class="clientes-list">
@@ -352,6 +173,51 @@ const jsonLd = {
           <span>¿Su empresa?</span>
           <span class="cliente-cta-label">Solicitar propuesta</span>
         </a>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="cobertura" class="cobertura">
+    <div class="wrap">
+      <div class="servicios-head">
+        <div>
+          <span class="kicker">COBERTURA</span>
+          <h2>Abogados en Cotopaxi y la sierra centro</h2>
+        </div>
+        <p class="servicios-desc">Oficina en Salcedo, patrocinio en Latacunga, Ambato y a nivel nacional. Cada materia con su propio equipo responsable.</p>
+      </div>
+      <div class="cobertura-grid">
+        {ciudades.map((c) => (
+          <a class="cobertura-card" href={`/${c.slug}`}>
+            <span class="cobertura-kicker">{c.kicker}</span>
+            <span class="cobertura-title">{c.h1}</span>
+            <span class="cobertura-desc">{c.intro.split(". ")[0]}.</span>
+          </a>
+        ))}
+      </div>
+      <div class="materias-grid">
+        {materias.map((m) => (
+          <a class="materia-link" href={`/${m.slug}`}>
+            <span>{m.materia}</span>
+            <span class="materia-arrow">&rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="preguntas" class="faq-section">
+    <div class="wrap">
+      <span class="kicker">PREGUNTAS FRECUENTES</span>
+      <h2 class="faq-h2">Lo que más nos consultan</h2>
+      <div class="faq-list">
+        {faq.map((f) => (
+          <details class="faq-item">
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
       </div>
     </div>
   </section>
@@ -390,50 +256,9 @@ const jsonLd = {
       </div>
     </div>
   </section>
-  </main>
+</Base>
 
-  <footer class="site-footer">
-    <div class="wrap footer-row">
-      <div class="footer-brand">
-        <img src="/logo-mark.png" width="38" height="38" alt="" loading="lazy" />
-        <span>VIRTUS ESTUDIO JURÍDICO</span>
-      </div>
-      <div class="footer-tag">JUSTICIA · COMPROMISO · CONFIANZA</div>
-    </div>
-  </footer>
-
-  <div class="cta-bar" id="cta-bar">
-    <a href={`tel:${PHONE}`}>Llamar</a>
-    <a href={WA_GENERAL} target="_blank" rel="noopener">WhatsApp</a>
-  </div>
-
-  <!-- ponytail: la cta-bar se oculta en desktop, este flotante cubre ese hueco -->
-  <a class="wa-float" href={WA_GENERAL} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.64 4.19 3.7.59.25 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.22-.17-.47-.29Z"/>
-    </svg>
-  </a>
-
-  <script>
-    const menuBtn = document.getElementById("menu-btn");
-    const navMobile = document.getElementById("nav-mobile");
-    menuBtn?.addEventListener("click", () => {
-      const open = navMobile?.hasAttribute("hidden");
-      if (open) {
-        navMobile?.removeAttribute("hidden");
-        menuBtn.setAttribute("aria-expanded", "true");
-      } else {
-        navMobile?.setAttribute("hidden", "");
-        menuBtn?.setAttribute("aria-expanded", "false");
-      }
-    });
-    navMobile?.querySelectorAll("a").forEach((a) =>
-      a.addEventListener("click", () => {
-        navMobile.setAttribute("hidden", "");
-        menuBtn?.setAttribute("aria-expanded", "false");
-      })
-    );
-
+<script>
     const grid = document.getElementById("services-grid");
     const toggle = document.getElementById("services-toggle");
     const total = grid?.querySelectorAll(".service-item").length ?? 0;
@@ -442,267 +267,4 @@ const jsonLd = {
       grid?.setAttribute("data-expanded", String(!expanded));
       toggle.textContent = expanded ? `Ver las ${total} áreas` : "Ver menos";
     });
-  </script>
-
-  <style is:global>
-    :root {
-      --maroon-900: #2d070c;
-      --maroon-800: #3d0b12;
-      --maroon-700: #4a0e16;
-      --gold-400: #e4c07f;
-      --gold-500: #d9b26a;
-      --gold-600: #c9a063;
-      --brown-600: #8a6a2f;
-      --cream-50: #fbf9f6;
-      --cream-100: #f2ece4;
-      --border-cream: #e0d5c6;
-      --border-cream-2: #ddd1c1;
-      --ink-900: #221a17;
-      --ink-800: #2c2320;
-      --ink-700: #4a3b34;
-      color-scheme: light;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: var(--cream-50);
-      color: var(--ink-900);
-      font-family: Lora, Georgia, serif;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-    a { color: var(--brown-600); text-decoration: none; }
-    a:hover { color: #5a0f19; }
-    ::selection { background: var(--gold-500); color: #4a0e16; }
-    img { max-width: 100%; }
-
-    .wrap { max-width: 1240px; margin: 0 auto; padding: 0 22px; }
-
-    .btn {
-      display: inline-block;
-      font-family: Cinzel, serif;
-      font-size: 12px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      padding: 16px 26px;
-      text-align: center;
-    }
-    .btn-gold { color: var(--maroon-700); background: var(--gold-500); }
-    .btn-gold:hover { background: var(--gold-400); color: var(--maroon-700); }
-    .btn-outline { color: var(--gold-400); border: 1px solid rgba(217,178,106,0.45); }
-    .btn-outline:hover { border-color: var(--gold-400); color: var(--gold-400); }
-    .btn-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
-
-    .kicker { display: block; font-family: Cinzel, serif; font-size: 10px; letter-spacing: 0.3em; color: var(--brown-600); }
-    .kicker-gold { color: var(--gold-500); }
-    .rule { width: 36px; height: 1px; background: var(--gold-600); margin: 14px 0 20px; }
-    .rule-gold { background: var(--gold-500); }
-    .rule-small { width: 24px; margin: 12px 0 10px; }
-    h1, h2, h3 { font-family: Cinzel, serif; font-weight: 400; margin: 0; }
-    .h-light { color: inherit; }
-
-    /* header */
-    .site-header { position: sticky; top: 0; z-index: 60; background: var(--maroon-700); border-bottom: 1px solid rgba(217,178,106,0.28); }
-    .header-row { padding: 12px 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .brand { display: flex; align-items: center; gap: 12px; }
-    .brand-mark { flex-shrink: 0; display: block; }
-    .footer-brand img { display: block; }
-    .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
-    .brand-name { font-family: Cinzel, serif; font-size: 16px; letter-spacing: 0.2em; color: var(--gold-400); }
-    .brand-sub { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(251,249,246,0.55); margin-top: 3px; }
-
-    .nav-desktop { display: none; }
-    .menu-btn {
-      width: 46px; height: 46px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
-      background: transparent; border: 1px solid rgba(217,178,106,0.4); cursor: pointer;
-    }
-    .menu-btn span { width: 18px; height: 1px; background: var(--gold-400); display: block; }
-    .nav-mobile { border-top: 1px solid rgba(217,178,106,0.22); padding: 8px 22px 18px; display: grid; }
-    .nav-mobile[hidden] { display: none; }
-    .nav-mobile a { padding: 15px 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(251,249,246,0.85); border-bottom: 1px solid rgba(217,178,106,0.14); }
-    .nav-mobile-cta { color: var(--gold-400) !important; border-bottom: none !important; }
-
-    /* hero */
-    .hero { position: relative; background: var(--maroon-700); color: var(--cream-50); overflow: hidden; }
-    .hero-glow { position: absolute; inset: 0; background: radial-gradient(120% 80% at 82% 20%, rgba(217,178,106,0.16), transparent 60%); }
-    .hero-grid { position: relative; padding: 44px 22px 0; display: grid; gap: 0; }
-    .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; font-family: Cinzel, serif; font-size: 10px; letter-spacing: 0.3em; color: var(--gold-500); }
-    .eyebrow-line { width: 30px; height: 1px; background: var(--gold-500); }
-    .hero h1 { font-size: 34px; line-height: 1.18; text-wrap: balance; }
-    .hero h1 em { font-style: normal; color: var(--gold-400); }
-    .lead { font-size: 16px; line-height: 1.65; color: rgba(251,249,246,0.78); margin: 18px 0 0; max-width: 30em; }
-    .hero-urgencias { margin: 18px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: rgba(217,178,106,0.85); }
-    .hero-img-wrap { position: relative; margin-top: 26px; }
-    .hero-img-frame { display: none; }
-    .hero-img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; filter: saturate(0.72) contrast(1.05) brightness(0.95); }
-
-    /* stats */
-    .stats { background: var(--maroon-800); border-top: 1px solid rgba(217,178,106,0.22); color: var(--cream-50); }
-    .stats-grid { padding: 0; display: grid; }
-    .stat { padding: 26px 22px; border-bottom: 1px solid rgba(217,178,106,0.18); text-align: left; }
-    .stat:last-child { border-bottom: none; }
-    .stat-title { font-family: Cinzel, serif; font-size: 13px; letter-spacing: 0.26em; color: var(--gold-400); }
-    .stat p { font-size: 14px; line-height: 1.6; color: rgba(251,249,246,0.62); margin: 10px 0 0; }
-
-    /* enfoque */
-    .enfoque { background: var(--cream-50); padding: 56px 0; }
-    .enfoque-grid { display: grid; gap: 40px; }
-    .enfoque-img { width: 100%; display: block; aspect-ratio: 3/2; object-fit: cover; filter: saturate(0.7) contrast(1.05); margin-top: 20px; }
-    .enfoque-statement { font-family: Cinzel, serif; font-size: 19px; line-height: 1.5; color: var(--maroon-700); text-wrap: pretty; }
-    .enfoque-pillars { display: grid; gap: 26px; margin-top: 30px; }
-    .pillar-title { font-family: Cinzel, serif; font-size: 12px; letter-spacing: 0.2em; color: var(--brown-600); }
-    .enfoque-pillars p { font-size: 15px; line-height: 1.7; color: var(--ink-700); margin: 8px 0 0; }
-
-    /* servicios */
-    .servicios { background: var(--cream-100); border-top: 1px solid var(--border-cream); border-bottom: 1px solid var(--border-cream); padding: 52px 0; }
-    .servicios-head { margin-bottom: 22px; }
-    .servicios-head h2 { font-size: 28px; color: var(--maroon-700); margin: 14px 0 0; }
-    .servicios-desc { font-size: 15px; line-height: 1.7; color: var(--ink-700); margin: 16px 0 0; }
-    .services-grid { display: grid; gap: 1px; background: var(--border-cream-2); border: 1px solid var(--border-cream-2); }
-    .service-item { background: #f9f5ef; padding: 15px 18px; display: flex; align-items: baseline; gap: 12px; }
-    .service-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold-600); }
-    .service-item span:last-child { font-size: 15px; line-height: 1.4; color: var(--ink-800); }
-    .services-grid[data-expanded="false"] .service-extra { display: none; }
-    .services-toggle {
-      width: 100%; margin-top: 14px; padding: 16px; background: transparent; border: 1px solid var(--gold-600);
-      font-family: Cinzel, serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brown-600); cursor: pointer;
-    }
-
-    /* quote */
-    .quote { position: relative; background: var(--maroon-900); overflow: hidden; }
-    .quote-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.35) brightness(0.45) sepia(0.2); }
-    .quote-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(45,7,12,0.85) 0%, rgba(45,7,12,0.6) 100%); }
-    .quote-content { position: relative; padding: 64px 22px; color: var(--cream-50); }
-    .quote-content p { font-family: Cinzel, serif; font-size: 22px; line-height: 1.45; margin: 0; max-width: 20em; }
-
-    /* equipo */
-    .equipo { background: var(--maroon-700); color: var(--cream-50); padding: 56px 0; }
-    .equipo-head { margin-bottom: 30px; }
-    .equipo-head h2 { font-size: 28px; margin: 14px 0 0; }
-    .team-grid { display: grid; gap: 30px; }
-    .team-card { display: grid; grid-template-columns: 104px 1fr; gap: 18px; align-items: start; }
-    .team-portrait {
-      aspect-ratio: 3/4; background: repeating-linear-gradient(135deg, rgba(217,178,106,0.14) 0 8px, rgba(217,178,106,0.05) 8px 16px);
-      border: 1px solid rgba(217,178,106,0.3); display: flex; align-items: flex-end; padding: 8px;
-    }
-    .team-portrait span { font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 0.06em; color: rgba(251,249,246,0.5); }
-    .team-info h3 { font-size: 19px; color: var(--gold-400); }
-    .team-info p { font-size: 14px; line-height: 1.65; color: rgba(251,249,246,0.75); margin: 0; }
-
-    /* clientes */
-    .clientes { background: var(--cream-50); padding: 52px 0; }
-    .clientes-grid { display: grid; gap: 40px; }
-    .clientes-desc { font-size: 15px; line-height: 1.7; color: var(--ink-700); margin: 0 0 26px; }
-    .clientes-img { width: 100%; display: block; aspect-ratio: 3/2; object-fit: cover; filter: saturate(0.7) contrast(1.05); }
-    .clientes-list { display: grid; gap: 1px; background: var(--border-cream); border: 1px solid var(--border-cream); }
-    .cliente-row { background: var(--cream-50); padding: 18px; display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
-    .cliente-name { font-family: Cinzel, serif; font-size: 15px; color: var(--ink-800); }
-    .cliente-city { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brown-600); white-space: nowrap; }
-    .cliente-cta { background: var(--maroon-700); padding: 20px 18px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
-    .cliente-cta:hover { background: var(--maroon-800); }
-    .cliente-cta span:first-child { font-family: Cinzel, serif; font-size: 14px; color: var(--gold-400); }
-    .cliente-cta-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(251,249,246,0.7); }
-
-    /* contacto */
-    .contacto { background: var(--maroon-800); color: var(--cream-50); padding: 52px 0 0; border-top: 1px solid rgba(217,178,106,0.22); }
-    .site-footer { background: var(--maroon-800); color: var(--cream-50); padding: 0 0 110px; }
-    .contacto-grid { display: grid; gap: 40px; }
-    .contacto h2 { font-size: 28px; line-height: 1.25; }
-    .contacto-lead { font-size: 16px; line-height: 1.7; color: rgba(251,249,246,0.75); margin: 16px 0 0; }
-    .contacto-info { display: grid; gap: 24px; padding: 30px 0; border-bottom: 1px solid rgba(217,178,106,0.22); }
-    .info-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(217,178,106,0.8); }
-    .contacto-info p { font-size: 16px; line-height: 1.55; margin: 8px 0 0; }
-    .info-link { color: var(--gold-400); border-bottom: 1px solid rgba(217,178,106,0.4); }
-    .info-link:hover { color: var(--cream-50); }
-    .footer-row { padding-top: 26px; display: grid; gap: 16px; justify-items: center; text-align: center; }
-    .footer-brand { display: flex; align-items: center; gap: 10px; }
-    .footer-brand span { font-family: Cinzel, serif; font-size: 12px; letter-spacing: 0.2em; color: var(--gold-400); }
-    .footer-tag { font-family: Cinzel, serif; font-size: 10px; letter-spacing: 0.22em; color: rgba(251,249,246,0.6); }
-
-    /* mobile sticky cta */
-    .cta-bar {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 70;
-      background: var(--maroon-700); border-top: 1px solid rgba(217,178,106,0.3);
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
-    }
-    .cta-bar a {
-      min-height: 58px; display: flex; align-items: center; justify-content: center;
-      font-family: Cinzel, serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
-      color: var(--gold-400);
-    }
-    .cta-bar a:last-child { color: var(--maroon-700); background: var(--gold-500); }
-    body { padding-bottom: 58px; }
-
-    .wa-float { display: none; }
-
-
-    /* ===== desktop breakpoint ===== */
-    @media (min-width: 860px) {
-      .wrap { padding: 0 32px; }
-      .header-row { padding: 14px 32px; }
-      .nav-desktop { display: flex; align-items: center; gap: 30px; }
-      .nav-desktop a:not(.btn) { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(251,249,246,0.8); }
-      .nav-desktop a:not(.btn):hover { color: var(--gold-400); }
-      .menu-btn, .nav-mobile, .cta-bar { display: none; }
-      .wa-float {
-        display: flex; position: fixed; right: 28px; bottom: 28px; z-index: 70;
-        width: 60px; height: 60px; border-radius: 50%;
-        align-items: center; justify-content: center;
-        background: var(--gold-500); color: var(--maroon-700);
-        box-shadow: 0 8px 24px rgba(45,7,12,0.35);
-        transition: background 0.2s, transform 0.2s;
-      }
-      .wa-float:hover { background: var(--gold-400); color: var(--maroon-700); transform: translateY(-2px); }
-      body { padding-bottom: 0; }
-
-      .hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: 72px; align-items: center; padding: 116px 32px 104px; }
-      .hero h1 { font-size: 60px; }
-      .lead { font-size: 18px; }
-      .hero-img-wrap { margin-top: 0; }
-      .hero-img-frame { display: block; position: absolute; inset: -14px -14px 14px 14px; border: 1px solid rgba(217,178,106,0.35); }
-      .hero-img { position: relative; aspect-ratio: 4/5; }
-
-      .stats-grid { grid-template-columns: repeat(3, 1fr); }
-      .stat { padding: 46px 34px; text-align: center; border-bottom: none; border-right: 1px solid rgba(217,178,106,0.18); }
-      .stat:last-child { border-right: none; }
-
-      .enfoque { padding: 108px 0; }
-      .enfoque-grid { grid-template-columns: 0.8fr 1.2fr; gap: 80px; align-items: start; }
-      .enfoque-img { margin-top: 0; }
-      .enfoque-statement { font-size: 34px; }
-      .enfoque-pillars { grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 56px; }
-
-      .servicios { padding: 84px 0; }
-      .servicios-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
-      .servicios-head h2 { font-size: 42px; }
-      .servicios-desc { max-width: 26em; margin: 0; }
-      .services-grid { grid-template-columns: repeat(3, 1fr); }
-      .services-grid[data-expanded="false"] .service-extra { display: flex; }
-      .services-toggle { display: none; }
-
-      .quote-content { padding: 132px 32px; }
-      .quote-content p { font-size: 32px; }
-
-      .equipo { padding: 104px 0; }
-      .equipo-head { text-align: center; margin-bottom: 62px; }
-      .equipo-head h2 { font-size: 42px; }
-      .team-grid { grid-template-columns: repeat(4, 1fr); gap: 34px; }
-      .team-card { grid-template-columns: 1fr; }
-      .team-portrait { aspect-ratio: 3/4; padding: 16px; }
-      .team-portrait span { font-size: 10px; }
-      .team-info h3 { margin-top: 24px; }
-
-      .clientes { padding: 96px 0; }
-      .clientes-grid { grid-template-columns: 0.8fr 1.2fr; gap: 80px; align-items: center; }
-
-      .contacto { padding: 96px 0 0; }
-      .site-footer { padding-bottom: 64px; }
-      .contacto-grid { grid-template-columns: 1.1fr 0.9fr; gap: 80px; }
-      .contacto h2 { font-size: 40px; }
-      .contacto-lead { font-size: 17px; max-width: 28em; }
-      .footer-row { padding-top: 28px; grid-auto-flow: column; justify-content: space-between; text-align: left; }
-    }
-  </style>
-</body>
-</html>
+</script>

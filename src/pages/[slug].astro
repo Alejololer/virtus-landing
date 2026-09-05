@@ -1,0 +1,147 @@
+---
+import Base from "../layouts/Base.astro";
+import { paginas, ciudades, materias } from "../data/paginas.js";
+import { SITE, ORG_ID, PHONE, PHONE_HUMAN, WA_GENERAL, wa } from "../data/site.js";
+
+export function getStaticPaths() {
+  return paginas.map((p) => ({ params: { slug: p.slug }, props: { pagina: p } }));
+}
+
+const { pagina } = Astro.props;
+const path = `/${pagina.slug}`;
+
+const mensaje =
+  pagina.tipo === "ciudad"
+    ? `Hola, necesito un abogado en ${pagina.ciudad}.`
+    : `Hola, necesito asesoría en ${pagina.materia}.`;
+const WA_PAGINA = wa(mensaje);
+
+// enlaces internos: las otras páginas del mismo tipo + las del otro tipo
+const relacionadas = paginas.filter((p) => p.slug !== pagina.slug).slice(0, 6);
+
+const extraSchema =
+  pagina.tipo === "materia"
+    ? [
+        {
+          "@type": "Service",
+          "@id": `${SITE}${path}#servicio`,
+          name: pagina.materia,
+          description: pagina.description,
+          serviceType: pagina.materia,
+          provider: { "@id": ORG_ID },
+          areaServed: [
+            { "@type": "AdministrativeArea", name: "Cotopaxi" },
+            { "@type": "City", name: "Salcedo" },
+            { "@type": "City", name: "Latacunga" },
+          ],
+          availableChannel: {
+            "@type": "ServiceChannel",
+            serviceUrl: `${SITE}${path}`,
+            servicePhone: PHONE,
+          },
+        },
+      ]
+    : [];
+---
+
+<Base
+  title={pagina.title}
+  description={pagina.description}
+  path={path}
+  faq={pagina.faq ?? []}
+  breadcrumb={[{ name: pagina.h1, path }]}
+  extraSchema={extraSchema}
+>
+  <main>
+    <section class="page-hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="wrap page-hero-inner">
+        <nav class="breadcrumbs" aria-label="Ruta de navegación">
+          <a href="/">Inicio</a> <span aria-hidden="true">/</span> <span>{pagina.h1}</span>
+        </nav>
+        <div class="eyebrow"><span class="eyebrow-line"></span>{pagina.kicker}</div>
+        <h1>{pagina.h1}</h1>
+        <p class="lead">{pagina.intro}</p>
+        <div class="btn-row">
+          <a href={WA_PAGINA} target="_blank" rel="noopener" class="btn btn-gold">Consultar por WhatsApp</a>
+          <a href={`tel:${PHONE}`} class="btn btn-outline">Llamar {PHONE_HUMAN}</a>
+        </div>
+        <p class="hero-urgencias">Atención de urgencias 24/7 · Oficina en Salcedo, frente a la Judicatura</p>
+      </div>
+    </section>
+
+    <article class="prose">
+      <div class="wrap">
+        {pagina.secciones.map((s) => (
+          <section class="prose-block">
+            <h2>{s.h2}</h2>
+            {(s.p ?? []).map((t) => <p>{t}</p>)}
+            {s.lista && (
+              <ul>
+                {s.lista.map((li) => <li>{li}</li>)}
+              </ul>
+            )}
+          </section>
+        ))}
+      </div>
+    </article>
+
+    {pagina.faq?.length > 0 && (
+      <section class="faq-section">
+        <div class="wrap">
+          <span class="kicker">PREGUNTAS FRECUENTES</span>
+          <h2 class="faq-h2">Sobre {pagina.tipo === "ciudad" ? `nuestra atención en ${pagina.ciudad}` : pagina.materia.toLowerCase()}</h2>
+          <div class="faq-list">
+            {pagina.faq.map((f) => (
+              <details class="faq-item">
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <section class="contacto">
+      <div class="wrap contacto-grid">
+        <div>
+          <h2 class="h-light">Conversemos sobre su caso.</h2>
+          <p class="contacto-lead">
+            Primera reunión de valoración para entender el asunto, los plazos y la estrategia adecuada.
+            Escriba por WhatsApp y le respondemos con el siguiente paso concreto.
+          </p>
+          <div class="btn-row">
+            <a href={WA_PAGINA} target="_blank" rel="noopener" class="btn btn-gold">Escribir por WhatsApp</a>
+            <a href={`tel:${PHONE}`} class="btn btn-outline">Llamar ahora</a>
+          </div>
+        </div>
+        <div class="contacto-info">
+          <div>
+            <div class="info-label">WhatsApp y teléfono</div>
+            <p><a class="info-link" href={`tel:${PHONE}`}>{PHONE_HUMAN}</a></p>
+          </div>
+          <div>
+            <div class="info-label">Disponibilidad</div>
+            <p>Urgencias 24/7<br />Consultas ordinarias en horario de oficina</p>
+          </div>
+          <div>
+            <div class="info-label">Oficina</div>
+            <p>Salcedo, Edificio Vecamores<br />frente a la Judicatura de Salcedo</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <div class="related">
+          <div class="info-label">También le puede interesar</div>
+          <div class="related-grid">
+            {relacionadas.map((r) => (
+              <a href={`/${r.slug}`}>{r.tipo === "ciudad" ? r.h1 : r.materia}</a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Base>

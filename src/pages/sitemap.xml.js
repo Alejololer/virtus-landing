@@ -1,12 +1,16 @@
 // ponytail: endpoint de 10 lineas en vez de @astrojs/sitemap (su v3.7 ya pide Astro 5)
+import { paginas } from "../data/paginas.js";
+
 export async function GET({ site }) {
-  const pages = Object.keys(import.meta.glob('./**/*.astro'))
-    .map((p) => p.replace('./', '').replace(/index\.astro$/, '').replace(/\.astro$/, '/'));
-  const urls = pages
-    .map((p) => `  <url><loc>${new URL(p, site)}</loc><changefreq>monthly</changefreq><priority>${p === '' ? '1.0' : '0.8'}</priority></url>`)
-    .join('\n');
+  const rutas = ["/", ...paginas.map((p) => `/${p.slug}`)];
+  const urls = rutas
+    .map(
+      (r) =>
+        `  <url><loc>${new URL(r, site).href}</loc><changefreq>monthly</changefreq><priority>${r === "/" ? "1.0" : "0.8"}</priority></url>`
+    )
+    .join("\n");
   return new Response(
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`,
-    { headers: { 'Content-Type': 'application/xml' } }
+    { headers: { "Content-Type": "application/xml" } }
   );
 }
