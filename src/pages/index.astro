@@ -1,0 +1,544 @@
+---
+const services = [
+  "Asesoría y consultoría jurídica",
+  "Patrocinio judicial y litigio",
+  "Derecho Civil y obligaciones",
+  "Contratos y negociación contractual",
+  "Recuperación y cobro de cartera",
+  "Incumplimiento de obligaciones y procesos ejecutivos",
+  "Responsabilidad civil e indemnizaciones",
+  "Arrendamientos y conflictos contractuales",
+  "Derecho de Familia y sucesiones",
+  "Derecho Laboral",
+  "Derecho Penal y defensa técnica",
+  "Derecho Administrativo",
+  "Constitución y asesoría empresarial",
+  "Propiedad Intelectual y registro de marcas",
+  "Protección de Datos Personales",
+  "Derecho Digital",
+  "Asesoría a extranjeros y asuntos internacionales",
+  "Prevención y gestión de riesgos legales",
+].map((name, i) => ({ name, num: String(i + 1).padStart(2, "0") }));
+
+const SERVICES_INITIAL = 8;
+
+const team = [
+  { name: "Juan Semblantes", slug: "semblantes", focus: "Derecho Procesal, Laboral, Protección de Datos y Derecho Digital." },
+  { name: "Vinicio Ortiz", slug: "ortiz", focus: "Derecho Penal, Litigios y Derecho Laboral, con enfoque en defensa y patrocinio judicial." },
+  { name: "Aylin Constante", slug: "constante", focus: "Propiedad Intelectual, Marcas y Derecho Internacional, con experiencia en asesoría a clientes extranjeros." },
+  { name: "Hernán Naranjo", slug: "naranjo", focus: "Derecho Civil, Contratos, Derecho Administrativo y asuntos patrimoniales." },
+];
+
+const clients = [
+  { name: "Asadero El Leñador", city: "Latacunga" },
+  { name: "Asadero El Leñador", city: "Salcedo" },
+  { name: "All Brazas", city: "Salcedo" },
+  { name: "Panadería El Lojanito", city: "Salcedo" },
+  { name: "Zetta Aros y Llantas", city: "Salcedo" },
+];
+
+const navLinks = [
+  { href: "#enfoque", label: "Enfoque" },
+  { href: "#servicios", label: "Servicios" },
+  { href: "#equipo", label: "Equipo" },
+  { href: "#clientes", label: "Clientes" },
+];
+---
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Virtus Estudio Jurídico — Asesoría, prevención y patrocinio legal</title>
+  <meta name="description" content="Firma jurídica multidisciplinaria en Salcedo, Ecuador. Asesoría estratégica, prevención y patrocinio legal para personas, empresas y organizaciones." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a href="#top" class="brand">
+        <svg class="brand-mark" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true">
+          <rect x="0.5" y="0.5" width="43" height="43" fill="#4a0e16" stroke="rgba(217,178,106,0.4)" />
+          <text x="22" y="29" text-anchor="middle" font-family="Cinzel, serif" font-size="20" fill="#e4c07f">V</text>
+        </svg>
+        <span class="brand-text">
+          <span class="brand-name">VIRTUS</span>
+          <span class="brand-sub">Estudio Jurídico</span>
+        </span>
+      </a>
+
+      <nav class="nav-desktop">
+        {navLinks.map((l) => <a href={l.href}>{l.label}</a>)}
+        <a href="#contacto" class="btn btn-gold">Contacto</a>
+      </nav>
+
+      <button id="menu-btn" class="menu-btn" aria-label="Menú" aria-expanded="false" aria-controls="nav-mobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav id="nav-mobile" class="nav-mobile" hidden>
+      {navLinks.map((l) => <a href={l.href}>{l.label}</a>)}
+      <a href="#contacto" class="nav-mobile-cta">Contacto</a>
+    </nav>
+  </header>
+
+  <section id="top" class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow"><span class="eyebrow-line"></span>SALCEDO · ECUADOR</div>
+        <h1>Asesoría estratégica, <em>prevención</em> y patrocinio legal.</h1>
+        <p class="lead">Firma jurídica multidisciplinaria para personas, empresas y organizaciones. Integramos distintas áreas del Derecho en soluciones coordinadas y adaptadas a cada caso.</p>
+        <div class="btn-row">
+          <a href="#contacto" class="btn btn-gold">Agendar consulta</a>
+          <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <div class="hero-img-frame" aria-hidden="true"></div>
+        <img src="https://images.pexels.com/photos/7875863/pexels-photo-7875863.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Abogada revisando documentos legales en el estudio" class="hero-img" />
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="wrap stats-grid">
+      <div class="stat">
+        <div class="stat-title">EXPERIENCIA</div>
+        <p>Práctica acumulada en materia procesal, penal, laboral y civil.</p>
+      </div>
+      <div class="stat">
+        <div class="stat-title">COMPROMISO</div>
+        <p>Atención directa del abogado responsable en cada expediente.</p>
+      </div>
+      <div class="stat">
+        <div class="stat-title">RESULTADOS</div>
+        <p>Resolución y seguimiento de casos a nivel nacional en Ecuador.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="enfoque" class="enfoque">
+    <div class="wrap enfoque-grid">
+      <div>
+        <span class="kicker">NUESTRO ENFOQUE</span>
+        <div class="rule"></div>
+        <img src="https://images.pexels.com/photos/8439654/pexels-photo-8439654.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Asesoría legal a un cliente" class="enfoque-img" />
+      </div>
+      <div>
+        <p class="enfoque-statement">Integramos distintas áreas del Derecho para brindar soluciones jurídicas coordinadas, estratégicas y adaptadas a las necesidades de cada cliente.</p>
+        <div class="enfoque-pillars">
+          <div>
+            <div class="pillar-title">ASESORÍA</div>
+            <p>Criterio jurídico claro antes de decidir, contratar o litigar.</p>
+          </div>
+          <div>
+            <div class="pillar-title">PREVENCIÓN</div>
+            <p>Gestión de riesgos legales, contratos y cumplimiento normativo.</p>
+          </div>
+          <div>
+            <div class="pillar-title">PATROCINIO</div>
+            <p>Defensa técnica y representación en sede judicial y administrativa.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" class="servicios">
+    <div class="wrap">
+      <div class="servicios-head">
+        <div>
+          <span class="kicker">SERVICIOS JURÍDICOS</span>
+          <h2>Áreas de práctica</h2>
+        </div>
+        <p class="servicios-desc">Cobertura completa en materia civil, penal, laboral, administrativa, corporativa y digital.</p>
+      </div>
+      <div class="services-grid" id="services-grid" data-expanded="false">
+        {services.map((s, i) => (
+          <div class:list={["service-item", { "service-extra": i >= SERVICES_INITIAL }]}>
+            <span class="service-num">{s.num}</span>
+            <span>{s.name}</span>
+          </div>
+        ))}
+      </div>
+      <button id="services-toggle" class="services-toggle" type="button">
+        Ver las {services.length} áreas
+      </button>
+    </div>
+  </section>
+
+  <section class="quote">
+    <img src="https://images.pexels.com/photos/5668882/pexels-photo-5668882.jpeg?auto=compress&cs=tinysrgb&w=1900" alt="Balanza de la justicia y mazo sobre libros de derecho" class="quote-img" />
+    <div class="quote-overlay" aria-hidden="true"></div>
+    <div class="wrap quote-content">
+      <div class="rule rule-gold"></div>
+      <p>Cada caso se atiende con estrategia, plazos claros y seguimiento directo del abogado responsable.</p>
+    </div>
+  </section>
+
+  <section id="equipo" class="equipo">
+    <div class="wrap">
+      <div class="equipo-head">
+        <span class="kicker kicker-gold">EL EQUIPO</span>
+        <h2 class="h-light">Especialidades</h2>
+      </div>
+      <div class="team-grid">
+        {team.map((m) => (
+          <div class="team-card">
+            <div class="team-portrait">
+              <span>retrato — {m.slug}.jpg</span>
+            </div>
+            <div class="team-info">
+              <h3>{m.name}</h3>
+              <div class="rule rule-gold rule-small"></div>
+              <p>{m.focus}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="clientes" class="clientes">
+    <div class="wrap clientes-grid">
+      <div>
+        <span class="kicker">CLIENTES EMPRESARIALES</span>
+        <div class="rule"></div>
+        <p class="clientes-desc">Acompañamiento legal continuo a negocios de Latacunga y Salcedo en materia contractual, laboral y de marcas.</p>
+        <img src="https://images.pexels.com/photos/8112180/pexels-photo-8112180.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Firma de un contrato empresarial" class="clientes-img" />
+      </div>
+      <div class="clientes-list">
+        {clients.map((c) => (
+          <div class="cliente-row">
+            <span class="cliente-name">{c.name}</span>
+            <span class="cliente-city">{c.city}</span>
+          </div>
+        ))}
+        <a href="#contacto" class="cliente-cta">
+          <span>¿Su empresa?</span>
+          <span class="cliente-cta-label">Solicitar propuesta</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contacto">
+    <div class="wrap contacto-grid">
+      <div>
+        <h2 class="h-light">Conversemos sobre su caso.</h2>
+        <p class="contacto-lead">Primera reunión de valoración para entender el asunto, los plazos y la estrategia adecuada.</p>
+        <div class="btn-row">
+          <a href="mailto:contacto@virtusestudiojuridico.com" class="btn btn-gold">Escribir al estudio</a>
+        </div>
+      </div>
+      <div class="contacto-info">
+        <div>
+          <div class="info-label">Oficina</div>
+          <p>Salcedo, Edificio Vecamores<br />frente a la Judicatura de Salcedo</p>
+        </div>
+        <div>
+          <div class="info-label">Dirección</div>
+          <p>Bolívar y C. Belisario Quevedo</p>
+        </div>
+        <div>
+          <div class="info-label">Cobertura</div>
+          <p>Casos a nivel nacional, Ecuador</p>
+        </div>
+      </div>
+    </div>
+    <div class="wrap footer-row">
+      <div class="footer-brand">
+        <svg width="38" height="38" viewBox="0 0 44 44" aria-hidden="true">
+          <rect x="0.5" y="0.5" width="43" height="43" fill="#4a0e16" stroke="rgba(217,178,106,0.35)" />
+          <text x="22" y="29" text-anchor="middle" font-family="Cinzel, serif" font-size="20" fill="#e4c07f">V</text>
+        </svg>
+        <span>VIRTUS ESTUDIO JURÍDICO</span>
+      </div>
+      <div class="footer-tag">JUSTICIA · COMPROMISO · CONFIANZA</div>
+    </div>
+  </section>
+
+  <div class="cta-bar" id="cta-bar">
+    <a href="tel:+593000000000">Llamar</a>
+    <a href="https://wa.me/593000000000" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+
+  <script>
+    const menuBtn = document.getElementById("menu-btn");
+    const navMobile = document.getElementById("nav-mobile");
+    menuBtn?.addEventListener("click", () => {
+      const open = navMobile?.hasAttribute("hidden");
+      if (open) {
+        navMobile?.removeAttribute("hidden");
+        menuBtn.setAttribute("aria-expanded", "true");
+      } else {
+        navMobile?.setAttribute("hidden", "");
+        menuBtn?.setAttribute("aria-expanded", "false");
+      }
+    });
+    navMobile?.querySelectorAll("a").forEach((a) =>
+      a.addEventListener("click", () => {
+        navMobile.setAttribute("hidden", "");
+        menuBtn?.setAttribute("aria-expanded", "false");
+      })
+    );
+
+    const grid = document.getElementById("services-grid");
+    const toggle = document.getElementById("services-toggle");
+    const total = grid?.querySelectorAll(".service-item").length ?? 0;
+    toggle?.addEventListener("click", () => {
+      const expanded = grid?.getAttribute("data-expanded") === "true";
+      grid?.setAttribute("data-expanded", String(!expanded));
+      toggle.textContent = expanded ? `Ver las ${total} áreas` : "Ver menos";
+    });
+  </script>
+
+  <style is:global>
+    :root {
+      --maroon-900: #2d070c;
+      --maroon-800: #3d0b12;
+      --maroon-700: #4a0e16;
+      --gold-400: #e4c07f;
+      --gold-500: #d9b26a;
+      --gold-600: #c9a063;
+      --brown-600: #8a6a2f;
+      --cream-50: #fbf9f6;
+      --cream-100: #f2ece4;
+      --border-cream: #e0d5c6;
+      --border-cream-2: #ddd1c1;
+      --ink-900: #221a17;
+      --ink-800: #2c2320;
+      --ink-700: #4a3b34;
+      color-scheme: light;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cream-50);
+      color: var(--ink-900);
+      font-family: Lora, Georgia, serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: var(--brown-600); text-decoration: none; }
+    a:hover { color: #5a0f19; }
+    ::selection { background: var(--gold-500); color: #4a0e16; }
+    img { max-width: 100%; }
+
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 0 22px; }
+
+    .btn {
+      display: inline-block;
+      font-family: Cinzel, serif;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 16px 26px;
+      text-align: center;
+    }
+    .btn-gold { color: var(--maroon-700); background: var(--gold-500); }
+    .btn-gold:hover { background: var(--gold-400); color: var(--maroon-700); }
+    .btn-outline { color: var(--gold-400); border: 1px solid rgba(217,178,106,0.45); }
+    .btn-outline:hover { border-color: var(--gold-400); color: var(--gold-400); }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+
+    .kicker { display: block; font-family: Cinzel, serif; font-size: 10px; letter-spacing: 0.3em; color: var(--brown-600); }
+    .kicker-gold { color: var(--gold-500); }
+    .rule { width: 36px; height: 1px; background: var(--gold-600); margin: 14px 0 20px; }
+    .rule-gold { background: var(--gold-500); }
+    .rule-small { width: 24px; margin: 12px 0 10px; }
+    h1, h2, h3 { font-family: Cinzel, serif; font-weight: 400; margin: 0; }
+    .h-light { color: inherit; }
+
+    /* header */
+    .site-header { position: sticky; top: 0; z-index: 60; background: var(--maroon-700); border-bottom: 1px solid rgba(217,178,106,0.28); }
+    .header-row { padding: 12px 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark { flex-shrink: 0; }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .brand-name { font-family: Cinzel, serif; font-size: 16px; letter-spacing: 0.2em; color: var(--gold-400); }
+    .brand-sub { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(251,249,246,0.55); margin-top: 3px; }
+
+    .nav-desktop { display: none; }
+    .menu-btn {
+      width: 46px; height: 46px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+      background: transparent; border: 1px solid rgba(217,178,106,0.4); cursor: pointer;
+    }
+    .menu-btn span { width: 18px; height: 1px; background: var(--gold-400); display: block; }
+    .nav-mobile { border-top: 1px solid rgba(217,178,106,0.22); padding: 8px 22px 18px; display: grid; }
+    .nav-mobile[hidden] { display: none; }
+    .nav-mobile a { padding: 15px 0; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(251,249,246,0.85); border-bottom: 1px solid rgba(217,178,106,0.14); }
+    .nav-mobile-cta { color: var(--gold-400) !important; border-bottom: none !important; }
+
+    /* hero */
+    .hero { position: relative; background: var(--maroon-700); color: var(--cream-50); overflow: hidden; }
+    .hero-glow { position: absolute; inset: 0; background: radial-gradient(120% 80% at 82% 20%, rgba(217,178,106,0.16), transparent 60%); }
+    .hero-grid { position: relative; padding: 44px 22px 0; display: grid; gap: 0; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; font-family: Cinzel, serif; font-size: 10px; letter-spacing: 0.3em; color: var(--gold-500); }
+    .eyebrow-line { width: 30px; height: 1px; background: var(--gold-500); }
+    .hero h1 { font-size: 34px; line-height: 1.18; text-wrap: balance; }
+    .hero h1 em { font-style: normal; color: var(--gold-400); }
+    .lead { font-size: 16px; line-height: 1.65; color: rgba(251,249,246,0.78); margin: 18px 0 0; max-width: 30em; }
+    .hero-img-wrap { position: relative; margin-top: 26px; }
+    .hero-img-frame { display: none; }
+    .hero-img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; filter: saturate(0.72) contrast(1.05) brightness(0.95); }
+
+    /* stats */
+    .stats { background: var(--maroon-800); border-top: 1px solid rgba(217,178,106,0.22); color: var(--cream-50); }
+    .stats-grid { padding: 0; display: grid; }
+    .stat { padding: 26px 22px; border-bottom: 1px solid rgba(217,178,106,0.18); text-align: left; }
+    .stat:last-child { border-bottom: none; }
+    .stat-title { font-family: Cinzel, serif; font-size: 13px; letter-spacing: 0.26em; color: var(--gold-400); }
+    .stat p { font-size: 14px; line-height: 1.6; color: rgba(251,249,246,0.62); margin: 10px 0 0; }
+
+    /* enfoque */
+    .enfoque { background: var(--cream-50); padding: 56px 0; }
+    .enfoque-grid { display: grid; gap: 40px; }
+    .enfoque-img { width: 100%; display: block; aspect-ratio: 3/2; object-fit: cover; filter: saturate(0.7) contrast(1.05); margin-top: 20px; }
+    .enfoque-statement { font-family: Cinzel, serif; font-size: 19px; line-height: 1.5; color: var(--maroon-700); text-wrap: pretty; }
+    .enfoque-pillars { display: grid; gap: 26px; margin-top: 30px; }
+    .pillar-title { font-family: Cinzel, serif; font-size: 12px; letter-spacing: 0.2em; color: var(--brown-600); }
+    .enfoque-pillars p { font-size: 15px; line-height: 1.7; color: var(--ink-700); margin: 8px 0 0; }
+
+    /* servicios */
+    .servicios { background: var(--cream-100); border-top: 1px solid var(--border-cream); border-bottom: 1px solid var(--border-cream); padding: 52px 0; }
+    .servicios-head { margin-bottom: 22px; }
+    .servicios-head h2 { font-size: 28px; color: var(--maroon-700); margin: 14px 0 0; }
+    .servicios-desc { font-size: 15px; line-height: 1.7; color: var(--ink-700); margin: 16px 0 0; }
+    .services-grid { display: grid; gap: 1px; background: var(--border-cream-2); border: 1px solid var(--border-cream-2); }
+    .service-item { background: #f9f5ef; padding: 15px 18px; display: flex; align-items: baseline; gap: 12px; }
+    .service-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--gold-600); }
+    .service-item span:last-child { font-size: 15px; line-height: 1.4; color: var(--ink-800); }
+    .services-grid[data-expanded="false"] .service-extra { display: none; }
+    .services-toggle {
+      width: 100%; margin-top: 14px; padding: 16px; background: transparent; border: 1px solid var(--gold-600);
+      font-family: Cinzel, serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brown-600); cursor: pointer;
+    }
+
+    /* quote */
+    .quote { position: relative; background: var(--maroon-900); overflow: hidden; }
+    .quote-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.35) brightness(0.45) sepia(0.2); }
+    .quote-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(45,7,12,0.85) 0%, rgba(45,7,12,0.6) 100%); }
+    .quote-content { position: relative; padding: 64px 22px; color: var(--cream-50); }
+    .quote-content p { font-family: Cinzel, serif; font-size: 22px; line-height: 1.45; margin: 0; max-width: 20em; }
+
+    /* equipo */
+    .equipo { background: var(--maroon-700); color: var(--cream-50); padding: 56px 0; }
+    .equipo-head { margin-bottom: 30px; }
+    .equipo-head h2 { font-size: 28px; margin: 14px 0 0; }
+    .team-grid { display: grid; gap: 30px; }
+    .team-card { display: grid; grid-template-columns: 104px 1fr; gap: 18px; align-items: start; }
+    .team-portrait {
+      aspect-ratio: 3/4; background: repeating-linear-gradient(135deg, rgba(217,178,106,0.14) 0 8px, rgba(217,178,106,0.05) 8px 16px);
+      border: 1px solid rgba(217,178,106,0.3); display: flex; align-items: flex-end; padding: 8px;
+    }
+    .team-portrait span { font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 0.06em; color: rgba(251,249,246,0.5); }
+    .team-info h3 { font-size: 19px; color: var(--gold-400); }
+    .team-info p { font-size: 14px; line-height: 1.65; color: rgba(251,249,246,0.75); margin: 0; }
+
+    /* clientes */
+    .clientes { background: var(--cream-50); padding: 52px 0; }
+    .clientes-grid { display: grid; gap: 40px; }
+    .clientes-desc { font-size: 15px; line-height: 1.7; color: var(--ink-700); margin: 0 0 26px; }
+    .clientes-img { width: 100%; display: block; aspect-ratio: 3/2; object-fit: cover; filter: saturate(0.7) contrast(1.05); }
+    .clientes-list { display: grid; gap: 1px; background: var(--border-cream); border: 1px solid var(--border-cream); }
+    .cliente-row { background: var(--cream-50); padding: 18px; display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
+    .cliente-name { font-family: Cinzel, serif; font-size: 15px; color: var(--ink-800); }
+    .cliente-city { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brown-600); white-space: nowrap; }
+    .cliente-cta { background: var(--maroon-700); padding: 20px 18px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    .cliente-cta:hover { background: var(--maroon-800); }
+    .cliente-cta span:first-child { font-family: Cinzel, serif; font-size: 14px; color: var(--gold-400); }
+    .cliente-cta-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(251,249,246,0.7); }
+
+    /* contacto */
+    .contacto { background: var(--maroon-800); color: var(--cream-50); padding: 52px 0 110px; border-top: 1px solid rgba(217,178,106,0.22); }
+    .contacto-grid { display: grid; gap: 40px; }
+    .contacto h2 { font-size: 28px; line-height: 1.25; }
+    .contacto-lead { font-size: 16px; line-height: 1.7; color: rgba(251,249,246,0.75); margin: 16px 0 0; }
+    .contacto-info { display: grid; gap: 24px; padding: 30px 0; border-bottom: 1px solid rgba(217,178,106,0.22); }
+    .info-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(217,178,106,0.8); }
+    .contacto-info p { font-size: 16px; line-height: 1.55; margin: 8px 0 0; }
+    .footer-row { padding-top: 26px; display: grid; gap: 16px; justify-items: center; text-align: center; }
+    .footer-brand { display: flex; align-items: center; gap: 10px; }
+    .footer-brand span { font-family: Cinzel, serif; font-size: 12px; letter-spacing: 0.2em; color: var(--gold-400); }
+    .footer-tag { font-family: Cinzel, serif; font-size: 10px; letter-spacing: 0.22em; color: rgba(251,249,246,0.6); }
+
+    /* mobile sticky cta */
+    .cta-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 70;
+      background: var(--maroon-700); border-top: 1px solid rgba(217,178,106,0.3);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    }
+    .cta-bar a {
+      min-height: 58px; display: flex; align-items: center; justify-content: center;
+      font-family: Cinzel, serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--gold-400);
+    }
+    .cta-bar a:last-child { color: var(--maroon-700); background: var(--gold-500); }
+    body { padding-bottom: 58px; }
+
+    /* ===== desktop breakpoint ===== */
+    @media (min-width: 860px) {
+      .wrap { padding: 0 32px; }
+      .header-row { padding: 14px 32px; }
+      .nav-desktop { display: flex; align-items: center; gap: 30px; }
+      .nav-desktop a:not(.btn) { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(251,249,246,0.8); }
+      .nav-desktop a:not(.btn):hover { color: var(--gold-400); }
+      .menu-btn, .nav-mobile, .cta-bar { display: none; }
+      body { padding-bottom: 0; }
+
+      .hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: 72px; align-items: center; padding: 116px 32px 104px; }
+      .hero h1 { font-size: 60px; }
+      .lead { font-size: 18px; }
+      .hero-img-wrap { margin-top: 0; }
+      .hero-img-frame { display: block; position: absolute; inset: -14px -14px 14px 14px; border: 1px solid rgba(217,178,106,0.35); }
+      .hero-img { position: relative; aspect-ratio: 4/5; }
+
+      .stats-grid { grid-template-columns: repeat(3, 1fr); }
+      .stat { padding: 46px 34px; text-align: center; border-bottom: none; border-right: 1px solid rgba(217,178,106,0.18); }
+      .stat:last-child { border-right: none; }
+
+      .enfoque { padding: 108px 0; }
+      .enfoque-grid { grid-template-columns: 0.8fr 1.2fr; gap: 80px; align-items: start; }
+      .enfoque-img { margin-top: 0; }
+      .enfoque-statement { font-size: 34px; }
+      .enfoque-pillars { grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 56px; }
+
+      .servicios { padding: 84px 0; }
+      .servicios-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+      .servicios-head h2 { font-size: 42px; }
+      .servicios-desc { max-width: 26em; margin: 0; }
+      .services-grid { grid-template-columns: repeat(3, 1fr); }
+      .services-grid[data-expanded="false"] .service-extra { display: flex; }
+      .services-toggle { display: none; }
+
+      .quote-content { padding: 132px 32px; }
+      .quote-content p { font-size: 32px; }
+
+      .equipo { padding: 104px 0; }
+      .equipo-head { text-align: center; margin-bottom: 62px; }
+      .equipo-head h2 { font-size: 42px; }
+      .team-grid { grid-template-columns: repeat(4, 1fr); gap: 34px; }
+      .team-card { grid-template-columns: 1fr; }
+      .team-portrait { aspect-ratio: 3/4; padding: 16px; }
+      .team-portrait span { font-size: 10px; }
+      .team-info h3 { margin-top: 24px; }
+
+      .clientes { padding: 96px 0; }
+      .clientes-grid { grid-template-columns: 0.8fr 1.2fr; gap: 80px; align-items: center; }
+
+      .contacto { padding: 96px 0 64px; }
+      .contacto-grid { grid-template-columns: 1.1fr 0.9fr; gap: 80px; }
+      .contacto h2 { font-size: 40px; }
+      .contacto-lead { font-size: 17px; max-width: 28em; }
+      .footer-row { padding-top: 28px; grid-auto-flow: column; justify-content: space-between; text-align: left; }
+    }
+  </style>
+</body>
+</html>
