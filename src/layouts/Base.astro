@@ -54,10 +54,11 @@ const jsonLd = buildSchema({ path, title, description, faq, breadcrumb, extra: e
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://images.pexels.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+
+  <!-- ponytail: solo las dos fuentes above the fold; Mono carga sin preload -->
+  <link rel="preload" href="/fonts/cinzel-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/lora-400.woff2" as="font" type="font/woff2" crossorigin />
 
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
 </head>
@@ -65,7 +66,7 @@ const jsonLd = buildSchema({ path, title, description, faq, breadcrumb, extra: e
   <header class="site-header">
     <div class="wrap header-row">
       <a href="/" class="brand">
-        <img class="brand-mark" src="/logo-mark.png" width="44" height="44" alt="Virtus Estudio Jurídico" />
+        <img class="brand-mark" src="/logo-mark.svg" width="44" height="44" alt="Virtus Estudio Jurídico" />
         <span class="brand-text">
           <span class="brand-name">VIRTUS</span>
           <span class="brand-sub">Estudio Jurídico</span>
@@ -122,7 +123,7 @@ const jsonLd = buildSchema({ path, title, description, faq, breadcrumb, extra: e
     </div>
     <div class="wrap footer-row">
       <div class="footer-brand">
-        <img src="/logo-mark.png" width="38" height="38" alt="" loading="lazy" />
+        <img src="/logo-mark.svg" width="38" height="38" alt="" loading="lazy" />
         <span>VIRTUS ESTUDIO JURÍDICO</span>
       </div>
       <div class="footer-tag">JUSTICIA · COMPROMISO · CONFIANZA</div>
@@ -163,6 +164,32 @@ const jsonLd = buildSchema({ path, title, description, faq, breadcrumb, extra: e
   </script>
 
   <style is:global>
+    /* subconjunto latin, los 3 unicos pesos que el sitio llega a usar */
+    @font-face {
+      font-family: 'Cinzel';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/fonts/cinzel-400.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: 'Lora';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/fonts/lora-400.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/fonts/jetbrains-mono-400.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
     :root {
       --maroon-900: #2d070c;
       --maroon-800: #3d0b12;
