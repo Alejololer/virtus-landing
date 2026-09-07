@@ -1,6 +1,6 @@
 ---
 import {
-  SITE, NAME, PHONE, PHONE_HUMAN, WA_GENERAL, navLinks, buildSchema,
+  SITE, NAME, PHONE, PHONE_HUMAN, WA_GENERAL, navLinks, herramientas, buildSchema,
 } from "../data/site.js";
 import { ciudades, materias, guias } from "../data/paginas.js";
 
@@ -109,6 +109,10 @@ const jsonLd = buildSchema({ path, title, description, faq, breadcrumb, extra: e
         <div class="footer-label">Guías legales</div>
         <ul>
           {guias.map((g) => <li><a href={`/${g.slug}`}>{g.h1}</a></li>)}
+        </ul>
+        <div class="footer-label footer-label-2">Herramientas</div>
+        <ul>
+          {herramientas.map((h) => <li><a href={`/${h.slug}`}>{h.h1}</a></li>)}
         </ul>
       </div>
       <div>
@@ -421,6 +425,11 @@ const jsonLd = buildSchema({ path, title, description, faq, breadcrumb, extra: e
     .footer-nav a { color: rgba(251,249,246,0.85); }
     .footer-nav a:hover { color: var(--gold-400); }
 
+    /* banda de herramienta en la portada */
+    .herramienta { background: var(--maroon-700); color: var(--cream-50); padding: 56px 0; border-top: 1px solid rgba(217,178,106,0.22); }
+    .herramienta h2 { font-size: 28px; margin: 0 0 4px; }
+    .footer-label-2 { margin-top: 22px; }
+
     /* mobile sticky cta */
     .cta-bar {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 70;
@@ -442,7 +451,7 @@ const jsonLd = buildSchema({ path, title, description, faq, breadcrumb, extra: e
     @media (min-width: 860px) {
       .wrap { padding: 0 32px; }
       .header-row { padding: 14px 32px; }
-      .nav-desktop { display: flex; align-items: center; gap: 30px; }
+      .nav-desktop { display: flex; align-items: center; gap: 22px; }
       .nav-desktop a:not(.btn) { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(251,249,246,0.8); }
       .nav-desktop a:not(.btn):hover { color: var(--gold-400); }
       .menu-btn, .nav-mobile, .cta-bar { display: none; }
@@ -509,6 +518,8 @@ const jsonLd = buildSchema({ path, title, description, faq, breadcrumb, extra: e
       .prose { padding: 84px 0; }
       .prose h2 { font-size: 28px; }
       .prose-block { margin-bottom: 54px; }
+      .herramienta { padding: 96px 0; }
+      .herramienta h2 { font-size: 40px; }
       .cobertura { padding: 84px 0; }
       .cobertura-grid { grid-template-columns: repeat(3, 1fr); gap: 22px; }
       .materias-grid { grid-template-columns: repeat(3, 1fr); margin-top: 22px; }

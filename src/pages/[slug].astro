@@ -142,6 +142,9 @@ const extraSchema =
         <div class="related">
           <div class="info-label">También le puede interesar</div>
           <div class="related-grid">
+            {pagina.herramienta && (
+              <a href={`/${pagina.herramienta.slug}`}>{pagina.herramienta.label}</a>
+            )}
             {relacionadas.map((r) => (
               <a href={`/${r.slug}`}>{r.tipo === "materia" ? r.materia : r.h1}</a>
             ))}

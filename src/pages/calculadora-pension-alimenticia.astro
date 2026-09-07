@@ -1,0 +1,1009 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE, ORG_ID, PHONE, PHONE_HUMAN, wa } from "../data/site.js";
+
+const path = "/calculadora-pension-alimenticia";
+const title = "Calculadora de pensiones alimenticias Ecuador 2026 | Virtus";
+const description =
+  "Calculadora gratuita de pensión alimenticia según la Tabla 2026 del Ecuador (SBU $482). Calcule el valor por ingresos, aporte al IESS, número de hijos, edad y discapacidad.";
+
+const WA_CALC = wa("Hola, acabo de usar la calculadora de pensiones y quisiera asesoría con un abogado de Virtus.");
+
+const faq = [
+  {
+    q: "¿Cómo se calcula la pensión alimenticia en Ecuador en 2026?",
+    a: "Se toma el ingreso mensual del alimentante, se descuenta únicamente el aporte personal al IESS y sobre ese valor se aplica el porcentaje de la Tabla de Pensiones Alimenticias Mínimas. El porcentaje depende del nivel de ingreso respecto al SBU, del número de hijos y de si el alimentado tiene menos o más de tres años.",
+  },
+  {
+    q: "¿Cuál es el SBU que usa la tabla 2026?",
+    a: "El Salario Básico Unificado de 2026 es de USD 482. Si el ingreso del alimentante es menor a un SBU, la tabla se aplica igualmente sobre ese mínimo legal de USD 482.",
+  },
+  {
+    q: "¿Qué descuentos se restan del ingreso?",
+    a: "Solo el aporte personal al IESS: 9.45% para el empleado privado, 9.35% para el servidor público y 11.45% para el afiliado independiente. No se restan préstamos, deudas personales, anticipos ni gastos del alimentante.",
+  },
+  {
+    q: "¿Cómo afecta la discapacidad del alimentado?",
+    a: "Cuando el alimentado acredita discapacidad se suma un porcentaje adicional del SBU sobre la pensión base, que varía según el nivel de ingreso y el grado de discapacidad certificado por el CONADIS (30-49%, 50-74% o 75-100%).",
+  },
+  {
+    q: "¿El resultado de la calculadora obliga al juez?",
+    a: "No. La tabla fija un mínimo referencial. El juez puede fijar un valor mayor considerando las necesidades reales del alimentado, la capacidad económica del alimentante y otras cargas familiares. Este resultado es una estimación y no reemplaza la asesoría de un abogado.",
+  },
+];
+
+const appSchema = {
+  "@type": "WebApplication",
+  "@id": `${SITE}${path}#app`,
+  name: "Calculadora de pensiones alimenticias Ecuador 2026",
+  url: `${SITE}${path}`,
+  description,
+  applicationCategory: "FinanceApplication",
+  operatingSystem: "Navegador web",
+  browserRequirements: "Requiere JavaScript",
+  inLanguage: "es-EC",
+  isAccessibleForFree: true,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  provider: { "@id": ORG_ID },
+  about: "Tabla de Pensiones Alimenticias Mínimas 2026 (Acuerdo MDH-DM-2026-0005-A), SBU USD 482",
+  featureList: [
+    "Cálculo por nivel de ingreso respecto al SBU",
+    "Descuento del aporte personal al IESS",
+    "Ajuste por número de hijos y rango de edad",
+    "Adicional por grado de discapacidad",
+    "Descarga del cálculo en PDF",
+  ],
+  dateModified: "2026-09-07",
+};
+
+const relacionadas = [
+  { slug: "pension-alimenticia-como-se-fija", label: "Cómo se fija la pensión alimenticia" },
+  { slug: "derecho-de-familia", label: "Derecho de Familia" },
+  { slug: "divorcio-por-mutuo-consentimiento", label: "Divorcio por mutuo consentimiento" },
+];
+---
+
+<Base
+  title={title}
+  description={description}
+  path={path}
+  faq={faq}
+  breadcrumb={[{ name: "Calculadora de pensiones alimenticias", path }]}
+  extraSchema={[appSchema]}
+>
+  <main>
+    <section class="page-hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="wrap page-hero-inner">
+        <nav class="breadcrumbs" aria-label="Ruta de navegación">
+          <a href="/">Inicio</a> <span aria-hidden="true">/</span> <span>Calculadora de pensiones alimenticias</span>
+        </nav>
+        <div class="eyebrow"><span class="eyebrow-line"></span>HERRAMIENTA GRATUITA · TABLA 2026</div>
+        <h1>Calculadora de pensiones alimenticias Ecuador 2026</h1>
+        <p class="lead">
+          Calcule el valor referencial de la pensión según la Tabla de Pensiones Alimenticias Mínimas vigente.
+          Ingrese el ingreso mensual, el aporte al IESS y los datos de cada alimentado.
+        </p>
+        <p class="hero-urgencias">SBU 2026 · USD 482.00 · Acuerdo MDH-DM-2026-0005-A</p>
+      </div>
+    </section>
+
+    <section class="calc">
+      <div class="wrap">
+        <div class="calculator-grid">
+          <div class="calculator-panel form-panel">
+            <div class="section-heading">
+              <div>
+                <span>Datos financieros</span>
+                <h2>Información para el cálculo</h2>
+              </div>
+              <strong>SBU 2026: $482.00</strong>
+            </div>
+
+            <form id="calc-form" class="calculator-form">
+              <div class="form-step" data-guide-target="ingresos">
+                <span class="step-badge">1</span>
+                <div>
+                  <div class="form-group">
+                    <label for="ingresos">Ingreso mensual del alimentante (USD)</label>
+                    <div class="input-wrapper">
+                      <span class="currency">$</span>
+                      <input type="number" id="ingresos" name="ingresos" step="0.01" min="0" required placeholder="Ej. 800.00" />
+                    </div>
+                    <p class="helper-text">Si el ingreso queda por debajo del SBU, se usa el mínimo legal de $482.00.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-step" data-guide-target="iess">
+                <span class="step-badge">2</span>
+                <div>
+                  <div class="form-group">
+                    <label for="aporte-iess">Aporte al IESS del alimentante</label>
+                    <select id="aporte-iess" name="aporte-iess">
+                      <option value="ninguno" selected>Sin descuento IESS</option>
+                      <option value="privado">Empleado privado (9.45% IESS)</option>
+                      <option value="publico">Empleado público (9.35% IESS)</option>
+                      <option value="independiente">Independiente (11.45% IESS)</option>
+                    </select>
+                    <p class="helper-text">Si no aporta, se calcula con el ingreso completo. Si aporta, se descuenta solo el aporte personal.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-step" data-guide-target="cargas">
+                <span class="step-badge">3</span>
+                <div>
+                  <div class="form-group">
+                    <label for="numHijos">Número de hijos o cargas familiares</label>
+                    <input type="number" id="numHijos" name="numHijos" min="1" max="10" required placeholder="Ej. 1" />
+                    <p class="helper-text">Luego podrá indicar nombre, edad y discapacidad de cada alimentado.</p>
+                  </div>
+
+                  <div id="edades-container" class="edades-container hidden"></div>
+
+                  <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                      <input type="checkbox" id="discapacidad" name="discapacidad" />
+                      <span class="custom-checkbox"></span>
+                      ¿Desea aplicar discapacidad a uno o más alimentados?
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn-calcular">Calcular pensión</button>
+            </form>
+          </div>
+
+          <aside class="result-column">
+            <div id="resultado-container" class="resultado-container hidden">
+              <div class="resultado-hero">
+                <h2>Pensión estimada</h2>
+                <p id="resultado-valor" class="resultado-valor">$0.00</p>
+              </div>
+              <div id="resultado-detalles" class="resultado-detalles"></div>
+              <div class="help-card resultado-help-card">
+                <h2>¿Problemas de pensiones?</h2>
+                <p>Los abogados de <strong>Virtus Estudio Jurídico</strong> pueden revisar su caso y orientarle con una estrategia clara.</p>
+                <a href={WA_CALC} target="_blank" rel="noopener" class="btn-ayuda">Evaluar mi caso</a>
+              </div>
+              <button type="button" id="descargar-calculo" class="btn-descargar-calculo">Descargar cálculo</button>
+              <p class="nota-legal">
+                * Los valores se basan en la Tabla de Pensiones Alimenticias 2026 publicada por la autoridad competente.
+                Este resultado no reemplaza el criterio de un juez ni la asesoría legal personalizada.
+              </p>
+            </div>
+
+            <div class="info-card info-card-compact" data-guide-card="ingresos">
+              <span class="info-number">1</span>
+              <div>
+                <h2>Ingresos</h2>
+                <p>Se consideran <strong>todos</strong> los ingresos mensuales. No se restan préstamos ni deudas personales.</p>
+              </div>
+            </div>
+
+            <div class="info-card info-card-compact" data-guide-card="iess">
+              <span class="info-number">2</span>
+              <div>
+                <h2>IESS</h2>
+                <p>El descuento IESS puede ser <strong>9.45%</strong> privado, <strong>9.35%</strong> público u <strong>11.45%</strong> independiente.</p>
+              </div>
+            </div>
+
+            <div class="info-card info-card-compact" data-guide-card="cargas">
+              <span class="info-number">3</span>
+              <div>
+                <h2>Cargas y discapacidad</h2>
+                <p>Registre cada alimentado. Si existe discapacidad, active la opción y seleccione el grado en su fila.</p>
+              </div>
+            </div>
+
+            <div class="help-card help-card-standalone">
+              <h2>¿Problemas de pensiones?</h2>
+              <p>Los abogados de <strong>Virtus Estudio Jurídico</strong> pueden revisar su caso y orientarle con una estrategia clara.</p>
+              <a href={WA_CALC} target="_blank" rel="noopener" class="btn-ayuda">Evaluar mi caso</a>
+            </div>
+          </aside>
+        </div>
+
+        <section id="tabla-oficial-container" class="tabla-oficial-container">
+          <div class="tabla-oficial-header">
+            <h2>Tabla de pensiones alimenticias mínimas</h2>
+            <p>Actualizada al año 2026</p>
+          </div>
+          <div id="tabla-oficial" class="tabla-oficial"></div>
+        </section>
+
+        <section class="precision-banner">
+          <div class="precision-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 3.5 18 6v5.1c0 3.9-2.4 7.4-6 8.9-3.6-1.5-6-5-6-8.9V6l6-2.5Z"></path>
+              <path d="m9.2 12.1 1.8 1.8 3.9-4.1"></path>
+            </svg>
+          </div>
+          <div>
+            <h2>Calculadora referencial de alta precisión</h2>
+            <p>
+              Este sistema entrega una estimación basada en la Tabla de Pensiones Alimenticias 2026. Para procesos complejos,
+              variaciones de ingresos, cargas familiares especiales o discusión judicial, recomendamos solicitar asesoría directa de
+              <strong>Virtus Estudio Jurídico</strong>.
+            </p>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <div class="wrap">
+        <span class="kicker">PREGUNTAS FRECUENTES</span>
+        <h2 class="faq-h2">Sobre el cálculo de la pensión alimenticia</h2>
+        <div class="faq-list">
+          {faq.map((f) => (
+            <details class="faq-item">
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="contacto">
+      <div class="wrap contacto-grid">
+        <div>
+          <h2 class="h-light">¿El valor no cuadra con su caso?</h2>
+          <p class="contacto-lead">
+            La tabla fija un mínimo, no un techo. Si necesita fijar, revisar, rebajar o cobrar una pensión,
+            escríbanos y le indicamos el siguiente paso concreto.
+          </p>
+          <div class="btn-row">
+            <a href={WA_CALC} target="_blank" rel="noopener" class="btn btn-gold">Escribir por WhatsApp</a>
+            <a href={`tel:${PHONE}`} class="btn btn-outline">Llamar {PHONE_HUMAN}</a>
+          </div>
+        </div>
+        <div class="contacto-info">
+          <div>
+            <div class="info-label">WhatsApp y teléfono</div>
+            <p><a class="info-link" href={`tel:${PHONE}`}>{PHONE_HUMAN}</a></p>
+          </div>
+          <div>
+            <div class="info-label">Disponibilidad</div>
+            <p>Urgencias 24/7<br />Consultas ordinarias en horario de oficina</p>
+          </div>
+          <div>
+            <div class="info-label">Oficina</div>
+            <p>Salcedo, Edificio Vecamores<br />frente a la Judicatura de Salcedo</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <div class="related">
+          <div class="info-label">También le puede interesar</div>
+          <div class="related-grid">
+            {relacionadas.map((r) => <a href={`/${r.slug}`}>{r.label}</a>)}
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="print-report" class="print-report" aria-hidden="true"></section>
+</Base>
+
+<script src="../scripts/calculadora.js"></script>
+
+<style is:global>
+/* ===== calculadora de pensiones ===== */
+.calc { background: var(--cream-50); padding: 46px 0; }
+.calculator-grid { display: grid; gap: 22px; align-items: start; }
+
+.calculator-panel,
+.info-card,
+.tabla-oficial-container,
+.precision-banner { background: #f9f5ef; border: 1px solid var(--border-cream-2); padding: 24px 20px; }
+
+.section-heading { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 14px; padding-bottom: 18px; margin-bottom: 24px; border-bottom: 1px solid var(--border-cream-2); }
+.section-heading span { display: block; font-family: Cinzel, serif; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--brown-600); }
+.section-heading h2 { font-size: 23px; color: var(--maroon-700); margin: 10px 0 0; }
+.section-heading strong { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 400; letter-spacing: 0.1em; color: var(--maroon-700); background: var(--gold-500); padding: 8px 12px; white-space: nowrap; }
+
+/* pasos del formulario */
+.form-step { display: grid; grid-template-columns: 34px 1fr; gap: 14px; padding: 18px 0; border-bottom: 1px solid var(--border-cream); }
+.form-step:last-of-type { border-bottom: none; }
+.step-badge, .info-number, .hijo-numero {
+  display: flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; flex-shrink: 0;
+  border: 1px solid var(--gold-600); color: var(--brown-600);
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+}
+.form-step.guide-active, .info-card-compact.guide-active { background: #fffdf7; box-shadow: inset 3px 0 0 var(--gold-500); }
+.form-step.guide-active .step-badge, .info-card-compact.guide-active .info-number { background: var(--gold-500); color: var(--maroon-700); border-color: var(--gold-500); }
+
+.form-group { margin-bottom: 18px; }
+.form-group:last-child { margin-bottom: 0; }
+
+.calc label { display: block; font-size: 14px; line-height: 1.5; color: var(--ink-800); margin-bottom: 8px; }
+.calc input[type="number"],
+.calc input[type="text"],
+.calc select {
+  width: 100%; padding: 13px 14px;
+  font-family: Lora, Georgia, serif; font-size: 15px; color: var(--ink-900);
+  background: var(--cream-50); border: 1px solid var(--border-cream-2);
+  appearance: none; -webkit-appearance: none;
+}
+.calc select {
+  background-image: linear-gradient(45deg, transparent 50%, var(--gold-600) 50%), linear-gradient(135deg, var(--gold-600) 50%, transparent 50%);
+  background-position: calc(100% - 19px) 50%, calc(100% - 14px) 50%;
+  background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; padding-right: 38px;
+}
+.calc input:focus, .calc select:focus { outline: none; border-color: var(--gold-600); background-color: #fff; }
+.calc input::placeholder { color: #a89c8d; }
+
+.input-wrapper { position: relative; }
+.input-wrapper .currency { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--gold-600); }
+.calc .input-wrapper input { padding-left: 32px; }
+
+.helper-text { font-size: 13px; line-height: 1.6; color: var(--ink-700); margin: 8px 0 0; }
+
+/* checkboxes */
+.checkbox-group { margin-top: 4px; }
+.calc .checkbox-label { display: flex; align-items: flex-start; gap: 11px; font-size: 14px; line-height: 1.5; color: var(--ink-800); cursor: pointer; margin-bottom: 0; }
+.checkbox-label input { position: absolute; opacity: 0; width: 0; height: 0; }
+.custom-checkbox { display: block; flex-shrink: 0; width: 18px; height: 18px; margin-top: 1px; border: 1px solid var(--gold-600); background: var(--cream-50); position: relative; }
+.checkbox-label input:checked + .custom-checkbox { background: var(--gold-500); border-color: var(--gold-500); }
+.checkbox-label input:checked + .custom-checkbox::after { content: ""; position: absolute; left: 5px; top: 1px; width: 5px; height: 10px; border: solid var(--maroon-700); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.checkbox-label input:focus-visible + .custom-checkbox { outline: 2px solid var(--gold-600); outline-offset: 2px; }
+
+/* hijos */
+.edades-container { margin-top: 18px; border-top: 1px solid var(--border-cream); padding-top: 18px; }
+.edades-container h3 { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brown-600); margin-bottom: 16px; }
+.edad-item { display: grid; grid-template-columns: 34px 1fr; gap: 14px; padding: 16px; margin-bottom: 12px; background: var(--cream-50); border: 1px solid var(--border-cream); }
+.edad-item:last-child { margin-bottom: 0; }
+.hijo-campos { display: grid; gap: 14px; }
+.discapacidad-hijo { grid-column: 2; padding-top: 14px; border-top: 1px solid var(--border-cream); }
+.discapacidad-detalle { margin-top: 12px; }
+
+.btn-calcular {
+  width: 100%; margin-top: 22px; padding: 17px 26px; cursor: pointer;
+  background: var(--gold-500); color: var(--maroon-700); border: none;
+  font-family: Cinzel, serif; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+}
+.btn-calcular:hover { background: var(--gold-400); }
+
+/* columna de resultado */
+.result-column { display: grid; gap: 16px; align-content: start; }
+.resultado-container { display: grid; gap: 16px; }
+.resultado-hero { background: var(--maroon-700); padding: 26px 22px; text-align: center; }
+.resultado-hero h2 { font-family: Cinzel, serif; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(251,249,246,0.7); }
+.resultado-valor { font-family: Cinzel, serif; font-size: 40px; line-height: 1.1; color: var(--gold-400); margin: 12px 0 0; }
+
+.resultado-detalles { background: #f9f5ef; border: 1px solid var(--border-cream-2); padding: 20px; }
+.resultado-detalles ul { margin: 0; padding: 0; list-style: none; }
+.resultado-detalles li { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: baseline; padding: 11px 0; border-bottom: 1px solid var(--border-cream); font-size: 14px; }
+.resultado-detalles li:last-child { border-bottom: none; }
+.resultado-detalles li > span { color: var(--ink-700); }
+.resultado-detalles li > strong { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 400; color: var(--maroon-700); text-align: right; }
+.resultado-detalles .li-desglose-hijos { grid-template-columns: 1fr; }
+.resultado-detalles .li-desglose-hijos > strong { display: grid; gap: 1px; width: 100%; margin-top: 10px; text-align: left; background: var(--border-cream-2); border: 1px solid var(--border-cream-2); }
+.hijo-resumen { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: baseline; background: var(--cream-50); padding: 11px 12px; }
+.hijo-resumen > span { font-family: Lora, Georgia, serif; font-size: 13px; color: var(--ink-700); }
+.hijo-resumen > strong { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 400; color: var(--maroon-700); }
+.hijo-resumen small { grid-column: 1 / -1; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--brown-600); }
+.resultado-fuente { font-family: 'JetBrains Mono', monospace; font-size: 10px; line-height: 1.6; color: var(--brown-600); margin: 16px 0 0; }
+
+.btn-descargar-calculo {
+  width: 100%; padding: 15px; cursor: pointer; background: transparent;
+  border: 1px solid var(--gold-600); color: var(--brown-600);
+  font-family: Cinzel, serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+}
+.btn-descargar-calculo:hover { border-color: var(--maroon-700); color: var(--maroon-700); }
+.nota-legal { font-size: 12px; line-height: 1.6; color: var(--ink-700); margin: 0; }
+
+/* tarjetas laterales */
+.info-card-compact { display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start; }
+.info-card h2 { font-family: Cinzel, serif; font-size: 15px; color: var(--maroon-700); }
+.info-card p { font-size: 14px; line-height: 1.65; color: var(--ink-700); margin: 7px 0 0; }
+.info-card strong { color: var(--maroon-700); }
+
+.help-card { background: var(--maroon-700); padding: 24px 20px; }
+.help-card h2 { font-family: Cinzel, serif; font-size: 17px; color: var(--gold-400); }
+.help-card p { font-size: 14px; line-height: 1.65; color: rgba(251,249,246,0.75); margin: 12px 0 18px; }
+.help-card strong { color: var(--cream-50); }
+.btn-ayuda { display: block; text-align: center; padding: 15px; background: var(--gold-500); color: var(--maroon-700); font-family: Cinzel, serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+.btn-ayuda:hover { background: var(--gold-400); color: var(--maroon-700); }
+.result-column:has(.resultado-container:not(.hidden)) .help-card-standalone { display: none; }
+
+/* tabla oficial */
+.tabla-oficial-container { margin-top: 22px; }
+.tabla-oficial-header { padding-bottom: 18px; margin-bottom: 20px; border-bottom: 1px solid var(--border-cream-2); }
+.tabla-oficial-header h2 { font-size: 23px; color: var(--maroon-700); }
+.tabla-oficial-header p { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brown-600); margin: 10px 0 0; }
+.tabla-oficial { display: grid; gap: 16px; }
+
+.nivel-tabla { display: grid; border: 1px solid var(--border-cream-2); }
+.nivel-tabla-encabezado { background: var(--maroon-700); color: var(--cream-50); padding: 18px; }
+.nivel-tabla-encabezado h3 { font-size: 18px; color: var(--gold-400); }
+.nivel-tabla-encabezado p { font-size: 13px; line-height: 1.55; color: rgba(251,249,246,0.8); margin: 8px 0 0; }
+.nivel-tabla-encabezado strong { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 400; color: var(--cream-50); }
+.nivel-tabla-encabezado > span { display: block; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: rgba(217,178,106,0.85); margin-top: 10px; }
+.nivel-discapacidad { margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(217,178,106,0.28); }
+.nivel-discapacidad p { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(217,178,106,0.8); margin: 0 0 8px; }
+.nivel-discapacidad span { display: flex; justify-content: space-between; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: rgba(251,249,246,0.72); padding: 3px 0; }
+.nivel-discapacidad strong { color: var(--cream-50); font-weight: 400; }
+
+.nivel-tabla-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border-cream-2); align-content: start; }
+.tabla-celda { background: var(--cream-50); padding: 12px 10px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-800); }
+.tabla-celda-titulo { background: var(--cream-100); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brown-600); }
+.tabla-celda-hijos { text-align: left; color: var(--ink-700); }
+
+.nivel-tabla-activo { border-color: var(--gold-600); }
+.nivel-tabla-activo .nivel-tabla-encabezado { background: var(--maroon-800); }
+.tabla-fila-activa { background: #fdf6e7; color: var(--maroon-700); }
+.tabla-celda-activa { background: var(--gold-500); color: var(--maroon-700); }
+
+/* banda de precisión */
+.precision-banner { display: grid; grid-template-columns: 42px 1fr; gap: 18px; align-items: start; margin-top: 22px; }
+.precision-icon { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--gold-600); }
+.precision-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--gold-600); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.precision-banner h2 { font-size: 17px; color: var(--maroon-700); }
+.precision-banner p { font-size: 14px; line-height: 1.7; color: var(--ink-700); margin: 9px 0 0; }
+.precision-banner strong { color: var(--maroon-700); }
+
+.hidden { display: none !important; }
+
+@media (min-width: 860px) {
+  .calc { padding: 84px 0; }
+  .calculator-grid { grid-template-columns: 1.35fr 0.65fr; gap: 26px; }
+  .calculator-panel, .info-card, .tabla-oficial-container, .precision-banner { padding: 30px 28px; }
+  .hijo-campos { grid-template-columns: 1fr 1fr; }
+  .resultado-valor { font-size: 46px; }
+  .nivel-tabla { grid-template-columns: 260px 1fr; }
+  .tabla-oficial-header h2, .section-heading h2 { font-size: 28px; }
+}
+
+/* ===== reporte imprimible / PDF ===== */
+.print-report {
+    display: none;
+}
+
+.print-page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 18mm;
+    background: #ffffff;
+    color: #231416;
+    font-family: Lora, Georgia, serif;
+}
+
+.print-header {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 1.3rem;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 4px solid var(--maroon-700);
+}
+
+.print-header img {
+    width: 118px;
+    height: auto;
+    justify-self: center;
+}
+
+.print-header h1 {
+    margin: 0 0 0.25rem;
+    color: var(--maroon-700);
+    font-size: 1.65rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.print-header p,
+.print-summary span,
+.print-total span {
+    margin: 0;
+    color: #8a7a76;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+.print-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin: 1.1rem 0;
+}
+
+.print-summary div,
+.print-iess-detail div,
+.print-total,
+.print-notes {
+    border: 1px solid #eadfd8;
+    background: #fbf8f4;
+    padding: 1rem;
+}
+
+.print-summary strong {
+    display: block;
+    margin-top: 0.4rem;
+    color: var(--maroon-700);
+    font-size: 1.15rem;
+}
+
+.print-iess-detail {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.6rem;
+    margin: -0.35rem 0 1rem;
+}
+
+.print-iess-detail-simple {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.print-iess-detail div {
+    padding: 0.75rem;
+}
+
+.print-iess-detail span {
+    display: block;
+    color: #8a7a76;
+    font-size: 0.64rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.print-iess-detail strong {
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--maroon-700);
+    font-size: 0.82rem;
+    line-height: 1.25;
+}
+
+.print-section {
+    margin-top: 1rem;
+}
+
+.print-section h2,
+.print-notes h2 {
+    margin: 0 0 0.7rem;
+    color: var(--maroon-700);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.print-section table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border: 1px solid #eadfd8;
+    font-size: 0.74rem;
+}
+
+.print-section th {
+    background: #fbf8f4;
+    color: var(--maroon-700);
+    padding: 0.75rem 0.55rem;
+    text-align: left;
+    text-transform: uppercase;
+    border-top: 2px solid var(--maroon-700);
+    border-bottom: 2px solid var(--maroon-700);
+    font-size: 0.68rem;
+    letter-spacing: 0.6px;
+}
+
+.print-section td {
+    padding: 0.7rem 0.55rem;
+    border-top: 1px solid #eadfd8;
+    color: #392327;
+    font-weight: 600;
+}
+
+.print-money {
+    display: block;
+    color: var(--maroon-700);
+    font-weight: 800;
+}
+
+.print-section td small {
+    display: block;
+    margin-top: 0.16rem;
+    color: #8a7a76;
+    font-size: 0.62rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.print-muted {
+    color: #8a7a76;
+    font-weight: 700;
+}
+
+.print-total {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    width: min(390px, 100%);
+    margin: 1.5rem 0 0 auto;
+    border-left: 6px solid var(--gold-600);
+}
+
+.print-total p,
+.print-notes p {
+    margin: 0.35rem 0 0;
+    color: #55464a;
+    line-height: 1.45;
+}
+
+.print-total strong {
+    color: var(--maroon-700);
+    font-size: 2rem;
+}
+
+.print-notes {
+    margin-top: 1rem;
+}
+
+.print-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid #eadfd8;
+    color: #8a7a76;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.print-table-page {
+    page-break-before: always;
+}
+
+.print-header-centered {
+    grid-template-columns: 150px 1fr;
+}
+
+.print-applied-reference {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.65rem;
+    margin: 0.9rem 0;
+}
+
+.print-applied-reference div {
+    padding: 0.75rem 0.85rem;
+    border: 1px solid #eadfd8;
+    background: #fbf8f4;
+}
+
+.print-applied-reference span {
+    display: block;
+    color: #8a7a76;
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.print-applied-reference strong {
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--maroon-700);
+    font-size: 1rem;
+}
+
+.print-official-tables {
+    display: grid;
+    gap: 0.45rem;
+    margin-top: 0.9rem;
+}
+
+.print-table-level {
+    display: grid;
+    grid-template-columns: 155px 1fr;
+    overflow: hidden;
+    border: 1px solid #eadfd8;
+    background: #ffffff;
+}
+
+.print-table-level-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.75rem;
+    background: #fbf8f4;
+    border-right: 1px solid #eadfd8;
+}
+
+.print-table-level-info h3 {
+    margin: 0 0 0.3rem;
+    color: var(--maroon-700);
+    font-size: 1.1rem;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.print-table-level-info p {
+    margin: 0;
+    color: #36252a;
+    font-size: 0.68rem;
+    line-height: 1.3;
+}
+
+.print-table-level-info strong {
+    color: var(--maroon-700);
+}
+
+.print-table-level-info span {
+    margin-top: 0.3rem;
+    color: #7c6f63;
+    font-size: 0.58rem;
+    font-weight: 800;
+    line-height: 1.25;
+    text-transform: uppercase;
+}
+
+.print-table-disability {
+    margin-top: 0.4rem;
+    padding-top: 0.4rem;
+    border-top: 1px solid #eadfd8;
+}
+
+.print-table-disability p {
+    margin: 0 0 0.18rem;
+    color: var(--maroon-700);
+    font-size: 0.52rem;
+    font-weight: 900;
+    letter-spacing: 0.4px;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.print-table-disability span {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.35rem;
+    margin-top: 0.12rem;
+    color: #55464a;
+    font-size: 0.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    text-transform: none;
+}
+
+.print-table-disability strong {
+    color: inherit;
+    font-weight: 900;
+}
+
+.print-table-level table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.68rem;
+}
+
+.print-table-level th,
+.print-table-level td {
+    padding: 0.45rem 0.4rem;
+    border-right: 1px solid #eadfd8;
+    border-bottom: 1px solid #eadfd8;
+    text-align: center;
+    color: var(--maroon-700);
+}
+
+.print-table-level th:last-child,
+.print-table-level td:last-child {
+    border-right: none;
+}
+
+.print-table-level tr:last-child td {
+    border-bottom: none;
+}
+
+.print-table-level th {
+    background: #fbf8f4;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.print-table-level td:first-child {
+    font-weight: 800;
+}
+
+.print-table-level-active {
+    border-color: var(--gold-600);
+}
+
+.print-table-level-active .print-table-level-info {
+    background: var(--maroon-800);
+    color: #ffffff;
+}
+
+.print-table-level-active .print-table-level-info h3,
+.print-table-level-active .print-table-level-info strong {
+    color: var(--gold-500);
+}
+
+.print-table-level-active .print-table-level-info p {
+    color: #ffffff;
+}
+
+.print-table-level-active .print-table-level-info span {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.print-table-level-active .print-table-disability {
+    border-top-color: rgba(255, 255, 255, 0.24);
+}
+
+.print-table-level-active .print-table-disability p,
+.print-table-level-active .print-table-disability span,
+.print-table-level-active .print-table-disability strong {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.print-table-row-active td {
+    background: #fbf5e8;
+    font-weight: 900;
+}
+
+.print-table-cell-active {
+    background: var(--maroon-800) !important;
+    color: var(--gold-500) !important;
+}
+
+/* Responsive */
+
+@media print {
+    @page {
+        size: A4;
+        margin: 12mm;
+    }
+
+    html,
+    body {
+        width: auto;
+        min-height: auto;
+        margin: 0;
+        padding: 0;
+        background: #ffffff !important;
+    }
+
+    body > *:not(.print-report) {
+        display: none !important;
+    }
+
+    .print-report {
+        display: block !important;
+    }
+
+    .print-page {
+        display: block;
+        width: 100%;
+        min-height: auto;
+        margin: 0;
+        padding: 0;
+        color: #231416;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .print-header,
+    .print-summary,
+    .print-section,
+    .print-total,
+    .print-notes,
+    .print-footer,
+    .print-applied-reference,
+    .print-table-level {
+        break-inside: avoid;
+    }
+
+    .print-header {
+        grid-template-columns: 140px 1fr;
+    }
+
+    .print-header img {
+        width: 105px;
+    }
+
+    .print-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .print-iess-detail {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 5pt;
+        margin: -3pt 0 8pt;
+    }
+
+    .print-iess-detail-simple {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .print-iess-detail div {
+        padding: 6pt;
+    }
+
+    .print-section table {
+        font-size: 9.5pt;
+    }
+
+    .print-section th,
+    .print-section td {
+        padding: 7pt 6pt;
+    }
+
+    .print-total strong {
+        font-size: 22pt;
+    }
+
+    .print-table-page {
+        page-break-before: always;
+    }
+
+    .print-applied-reference {
+        grid-template-columns: repeat(3, 1fr);
+        margin: 8pt 0;
+        gap: 6pt;
+    }
+
+    .print-applied-reference div {
+        padding: 7pt;
+    }
+
+    .print-official-tables {
+        gap: 5pt;
+        margin-top: 8pt;
+    }
+
+    .print-table-level {
+        grid-template-columns: 145px 1fr;
+    }
+
+    .print-table-level-info {
+        padding: 7pt;
+    }
+
+    .print-table-level-info h3 {
+        font-size: 12pt;
+    }
+
+    .print-table-level-info p,
+    .print-table-level table {
+        font-size: 7.4pt;
+    }
+
+    .print-table-level-info span {
+        font-size: 6.2pt;
+    }
+
+    .print-table-disability {
+        margin-top: 3pt;
+        padding-top: 3pt;
+    }
+
+    .print-table-disability p {
+        font-size: 5.2pt;
+    }
+
+    .print-table-disability span {
+        font-size: 5pt;
+    }
+
+    .print-table-level th,
+    .print-table-level td {
+        padding: 5pt 4pt;
+    }
+}
+</style>

@@ -61,6 +61,18 @@ export const navLinks = [
   { href: "/#servicios", label: "Servicios" },
   { href: "/#equipo", label: "Equipo" },
   { href: "/#clientes", label: "Clientes" },
+  { href: "/calculadora-pension-alimenticia", label: "Calculadora" },
+];
+
+/* Herramientas: paginas de utilidad que no viven en paginas.js porque no son
+   prosa. Un solo origen para sitemap, llms.txt, el pie y la portada. */
+export const herramientas = [
+  {
+    slug: "calculadora-pension-alimenticia",
+    h1: "Calculadora de pensiones alimenticias 2026",
+    description:
+      "Calcula la pension minima segun la Tabla 2026 del Ecuador (SBU $482) por ingresos, aporte al IESS, numero de hijos, edad y discapacidad.",
+  },
 ];
 
 export const ORG_ID = `${SITE}/#estudio`;

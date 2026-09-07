@@ -680,6 +680,7 @@ export const paginas = [
   },
   {
     slug: "pension-alimenticia-como-se-fija",
+    herramienta: { slug: "calculadora-pension-alimenticia", label: "Calculadora de pensiones alimenticias 2026" },
     tipo: "guia",
     materia: "la pensión alimenticia",
     relacionadas: ["derecho-de-familia", "abogados-en-salcedo", "abogados-en-cotopaxi"],
