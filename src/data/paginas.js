@@ -850,6 +850,70 @@ export const paginas = [
       },
     ],
   },
+  {
+    slug: "accidente-de-transito-recuperar-vehiculo",
+    tipo: "guia",
+    materia: "los accidentes de tránsito y la retención del vehículo",
+    relacionadas: ["abogado-penalista", "abogados-en-salcedo", "abogados-en-latacunga"],
+    title: "Accidente de tránsito: qué hacer y cómo recuperar el vehículo retenido",
+    description:
+      "Qué hacer tras un accidente de tránsito en Ecuador, cuándo es contravención y cuándo delito, y qué se necesita para que liberen el vehículo de los patios de retención.",
+    kicker: "GUÍA · TRÁNSITO",
+    h1: "Accidente de tránsito y vehículo retenido",
+    intro:
+      "Después de un accidente el vehículo casi siempre termina en los patios de retención, y cada día que pasa ahí cuesta dinero. Recuperarlo no depende de insistir en la ventanilla: depende de que se cumplan, en orden, los pasos que la ley exige.",
+    secciones: [
+      {
+        h2: "Primero: saber si es contravención o delito",
+        p: [
+          "La diferencia lo define todo. Si del accidente solo resultaron daños materiales, se trata de una contravención de tránsito y la causa se resuelve ante el juez competente en un procedimiento breve. Si hubo lesiones o muerte, estamos ante un delito de tránsito, con instrucción fiscal, peritajes y consecuencias penales de otra escala.",
+          "En ambos casos se practican pericias —reconocimiento del lugar, avalúo de daños, informe mecánico y, cuando corresponde, exámenes de alcoholemia—. Hasta que esas diligencias se realicen, el vehículo permanece retenido.",
+        ],
+      },
+      {
+        h2: "Qué hace falta para que liberen el vehículo",
+        p: [
+          "La orden de entrega la dispone la autoridad que conoce la causa, no el patio de retención. Lo que se puede hacer es acelerar el cumplimiento de los requisitos para que esa orden se emita cuanto antes:",
+        ],
+        lista: [
+          "Acreditar la propiedad del vehículo: matrícula y contrato de compraventa si el traspaso está en trámite.",
+          "Que se hayan practicado los peritajes dispuestos sobre el automotor.",
+          "Estar al día en matriculación y no tener impedimentos administrativos pendientes.",
+          "Cancelar las tasas de grúa y de permanencia en el patio, que se cobran por día.",
+          "Obtener y presentar la orden de entrega ante el patio de retención.",
+        ],
+      },
+      {
+        h2: "Lo que se decide en las primeras horas",
+        p: [
+          "Las declaraciones que se dan en el lugar del accidente, la versión que consta en el parte policial y la aceptación apresurada de responsabilidad pesan durante todo el proceso, y son muy difíciles de revertir después.",
+          "Por eso conviene consultar antes de firmar cualquier documento o de llegar a un arreglo con la otra parte. Un acuerdo puede ser la mejor salida, pero conviene firmarlo sabiendo qué responsabilidad se está asumiendo y qué cubre realmente el seguro.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "¿Cuánto tiempo puede quedarse retenido el vehículo?",
+        a: "Mientras no se practiquen las pericias y no se emita la orden de entrega. El plazo no es fijo: depende de la agenda pericial y de la diligencia con que se impulse el trámite. Cada día adicional suma tasas de patio, y ese es el costo que sí se puede reducir actuando rápido.",
+      },
+      {
+        q: "El accidente fue en fin de semana o feriado. ¿Se puede hacer algo?",
+        a: "Sí. Atendemos urgencias las veinticuatro horas, incluidos fines de semana. Las primeras gestiones —ubicar el parte, verificar dónde quedó el vehículo y ante qué autoridad se radica el caso— no esperan al lunes.",
+      },
+      {
+        q: "El otro conductor propone arreglar sin denuncia. ¿Conviene?",
+        a: "Puede convenir, pero solo si el acuerdo queda documentado y cubre todo el perjuicio. Un arreglo verbal deja al que pagó sin respaldo y al que recibió sin garantía de que no le reclamen después.",
+      },
+      {
+        q: "¿Qué pasa con los puntos de la licencia?",
+        a: "Las contravenciones de tránsito reducen puntos según su clase, y la pérdida total acarrea la suspensión de la licencia. Es una consecuencia que se discute dentro del mismo proceso, no después.",
+      },
+      {
+        q: "El vehículo no está a mi nombre. ¿Puedo retirarlo igual?",
+        a: "Se requiere acreditar la titularidad o contar con la autorización del propietario registrado. Si la compraventa no se traspasó, ese es justamente el nudo que hay que resolver primero.",
+      },
+    ],
+  },
 ];
 
 export const ciudades = paginas.filter((p) => p.tipo === "ciudad");
