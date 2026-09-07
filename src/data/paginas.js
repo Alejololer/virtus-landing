@@ -914,6 +914,149 @@ export const paginas = [
       },
     ],
   },
+  {
+    slug: "como-elegir-abogado-en-cotopaxi",
+    tipo: "guia",
+    materia: "cómo elegir un abogado",
+    relacionadas: ["como-se-fijan-los-honorarios-de-un-abogado", "abogados-en-cotopaxi", "abogados-en-salcedo"],
+    title: "Cómo elegir un abogado en Cotopaxi y qué preguntar antes de contratar",
+    description:
+      "Qué verificar antes de entregar un caso: matrícula profesional, experiencia en la materia concreta, quién lleva realmente el expediente y qué debe constar por escrito.",
+    kicker: "GUÍA · CÓMO CONTRATAR",
+    h1: "Cómo elegir un abogado en Cotopaxi",
+    intro:
+      "Elegir abogado es una decisión que casi siempre se toma con prisa y con poca información, y suele definir el resultado del caso más que la propia ley aplicable. Estas son las verificaciones concretas que puede hacer antes de firmar nada.",
+    secciones: [
+      {
+        h2: "Qué se debe verificar antes de entregar un caso",
+        p: [
+          "Son comprobaciones objetivas, no impresiones. Cualquier profesional serio las responde sin incomodarse:",
+        ],
+        lista: [
+          "Matrícula profesional vigente en el Foro de Abogados del Consejo de la Judicatura, que es consultable en línea con el número de cédula.",
+          "Experiencia en la materia específica de su caso. Un excelente penalista no es la persona indicada para una partición de herencia.",
+          "Quién llevará el expediente en la práctica: el abogado con quien conversa, o un tercero al que le derivan el caso después de firmar.",
+          "Si ha litigado antes ante la judicatura donde se radicará su causa, porque los tiempos y criterios varían entre cantones.",
+          "Qué pasa si el caso se pierde o se abandona, y bajo qué condiciones se puede sustituir el patrocinio.",
+        ],
+      },
+      {
+        h2: "Las señales de alarma",
+        p: [
+          "Hay respuestas que deberían hacerle dudar. La primera es la garantía de resultado: ningún abogado puede prometer que va a ganar, porque quien decide es un juez. Lo que sí se puede evaluar con honestidad es cuán sólida es su posición y qué escenarios son realistas.",
+          "La segunda es la falta de un acuerdo escrito. Si le piden dinero antes de definir por escrito el alcance del trabajo y los honorarios, el problema aparecerá más adelante, cuando ya no tenga margen para negociar. La tercera es la opacidad: si no le explican en lenguaje claro qué se va a hacer y en qué plazos, difícilmente se lo explicarán cuando el proceso se complique.",
+        ],
+      },
+      {
+        h2: "Qué debe constar por escrito antes de empezar",
+        p: [
+          "El acuerdo no necesita ser un documento extenso, pero sí debe dejar sin ambigüedad cuatro cosas: qué gestión concreta se contrata y hasta qué instancia, cuáles son los honorarios y cómo se pagan, qué gastos procesales son adicionales y a cargo de quién, y cómo se comunica el avance del caso.",
+          "Ese documento protege a las dos partes. Al cliente, de un cobro que crece sobre la marcha; al abogado, de un encargo que se amplía indefinidamente sin contraprestación.",
+        ],
+      },
+      {
+        h2: "Cómo trabajamos nosotros",
+        p: [
+          "En Virtus la primera reunión es de valoración: revisamos los documentos que usted tenga, le decimos con franqueza qué tan sólida es su posición, si el asunto se resuelve por vía extrajudicial o judicial, y qué plazos corren. De ahí sale una estrategia con etapas y costos definidos antes de iniciar cualquier trámite.",
+          "El abogado responsable del expediente es quien lo atiende y quien responde por él hasta el final. No derivamos el caso a terceros.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "¿Cómo verifico que un abogado está habilitado para ejercer en Ecuador?",
+        a: "Consultando el Foro de Abogados del Consejo de la Judicatura, que permite verificar en línea la matrícula profesional con el número de cédula. Un abogado sin matrícula vigente no puede patrocinar causas.",
+      },
+      {
+        q: "¿Puedo cambiar de abogado si el caso ya empezó?",
+        a: "Sí. Se revisa el expediente, se evalúa el estado procesal y los términos pendientes, y se formaliza la sustitución del patrocinio. Conviene hacerlo cuanto antes: hay plazos que no se recuperan una vez vencidos.",
+      },
+      {
+        q: "¿Es mejor un estudio grande o un abogado individual?",
+        a: "Depende del caso, no del tamaño. Lo que importa es quién lleva efectivamente su expediente y si domina la materia. Un estudio grande donde su caso lo atiende un pasante recién graduado es peor que un profesional individual con veinte años en esa materia.",
+      },
+      {
+        q: "¿Debo desconfiar si el abogado no me garantiza ganar?",
+        a: "Al contrario. La garantía de resultado es la señal de alarma; quien decide es un juez, no el abogado. Lo que sí debe darle es una evaluación honesta de sus probabilidades y de los escenarios posibles.",
+      },
+      {
+        q: "¿La primera consulta compromete a contratar?",
+        a: "No. Es una valoración del caso para que usted decida con información. Su alcance y condiciones se acuerdan antes de agendar.",
+      },
+    ],
+  },
+  {
+    slug: "como-se-fijan-los-honorarios-de-un-abogado",
+    tipo: "guia",
+    materia: "los honorarios profesionales",
+    relacionadas: ["como-elegir-abogado-en-cotopaxi", "abogados-en-cotopaxi", "cobro-de-deudas"],
+    title: "Cómo se fijan los honorarios de un abogado en Ecuador",
+    description:
+      "Qué factores determinan el honorario profesional, en qué se diferencia de los gastos procesales, por qué debe acordarse por escrito antes de iniciar y cómo se estructura por etapas.",
+    kicker: "GUÍA · HONORARIOS",
+    h1: "Cómo se fijan los honorarios de un abogado",
+    intro:
+      "Es la pregunta que más se hace y la que menos se responde con claridad. No existe una tarifa única en Ecuador: los honorarios se pactan libremente entre abogado y cliente, y por eso lo determinante no es el monto aislado, sino entender qué lo compone y cuándo se acuerda.",
+    secciones: [
+      {
+        h2: "Qué factores determinan el honorario",
+        p: [
+          "Dos casos de la misma materia pueden costar muy distinto, y por razones legítimas. Estos son los factores que realmente pesan:",
+        ],
+        lista: [
+          "La materia y su complejidad técnica: no es lo mismo un trámite notarial de mutuo acuerdo que un litigio contradictorio con prueba pericial.",
+          "La cuantía o el valor patrimonial en discusión.",
+          "El tiempo estimado de dedicación y la cantidad de audiencias e instancias previstas.",
+          "Si el asunto se resuelve extrajudicialmente o exige demanda, con todo lo que implica en escritos, comparecencias y seguimiento.",
+          "La urgencia: una detención en flagrancia un domingo no se atiende en las mismas condiciones que una consulta agendada.",
+          "El desplazamiento, cuando la causa se radica en un cantón distinto al de la oficina.",
+        ],
+      },
+      {
+        h2: "Honorarios y gastos procesales no son lo mismo",
+        p: [
+          "Es la confusión más frecuente y la que genera más malentendidos a mitad de un proceso. El honorario retribuye el trabajo profesional del abogado. Los gastos procesales son desembolsos a terceros que existen aunque el abogado no cobrara nada: tasas judiciales y notariales, certificados de registros, honorarios de peritos, publicaciones, copias certificadas.",
+          "Un presupuesto serio distingue ambas cosas desde el inicio y aclara cuáles se anticipan y cuáles se liquidan contra comprobante. Cuando todo se presenta como una cifra global indivisible, el cliente no tiene forma de saber qué está pagando.",
+        ],
+      },
+      {
+        h2: "Por qué se acuerda antes y no después",
+        p: [
+          "El honorario debe fijarse por escrito antes de iniciar el trámite, nunca una vez empezado. La razón es simple: iniciado el proceso, el cliente pierde capacidad de negociación, porque cambiar de abogado a mitad de camino tiene un costo propio en tiempo y en riesgo procesal.",
+          "Acordar al principio también obliga al abogado a definir con precisión el alcance de lo que se contrata, que es donde suelen aparecer las diferencias: hasta qué instancia llega el encargo, si incluye la ejecución de la sentencia, si cubre incidentes o recursos no previstos.",
+        ],
+      },
+      {
+        h2: "Cómo estructuramos los honorarios en Virtus",
+        p: [
+          "Trabajamos por etapas y con alcance definido. Después de la reunión de valoración entregamos una propuesta que dice qué gestión concreta se contrata, hasta dónde llega, cómo se paga y qué gastos procesales quedan fuera del honorario. Nada de eso se modifica sobre la marcha sin un acuerdo nuevo y expreso.",
+          "El alcance y las condiciones de la primera reunión se conversan por WhatsApp antes de agendar, para que usted sepa a qué atenerse desde el primer contacto.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "¿Existe una tarifa oficial de honorarios de abogados en Ecuador?",
+        a: "No hay una tarifa obligatoria de aplicación general: los honorarios se pactan entre las partes. Existen tablas referenciales usadas para la regulación judicial de costas en ciertos supuestos, pero no funcionan como lista de precios para la contratación privada.",
+      },
+      {
+        q: "¿Se puede pactar un porcentaje sobre lo que se recupere?",
+        a: "Es una modalidad usada sobre todo en cobranzas y reclamaciones patrimoniales. Conviene precisar por escrito sobre qué base se calcula el porcentaje, qué ocurre si el caso se pierde y quién asume los gastos procesales en ese escenario.",
+      },
+      {
+        q: "¿Por qué dos abogados me cotizan valores muy distintos por lo mismo?",
+        a: "Casi siempre porque no están cotizando lo mismo. Uno puede incluir solo la demanda y otro todo el proceso hasta la ejecución. Antes de comparar cifras, compare el alcance por escrito.",
+      },
+      {
+        q: "¿Debo pagar algo en la primera reunión?",
+        a: "En Virtus la primera reunión es de valoración del caso y su alcance se acuerda por WhatsApp antes de agendar. Los honorarios del patrocinio se fijan por escrito según la materia y la complejidad, nunca después de iniciado el trámite.",
+      },
+      {
+        q: "Si gano el juicio, ¿la otra parte paga mis honorarios?",
+        a: "La condena en costas es posible, pero no es automática ni cubre necesariamente todo lo que usted pactó con su abogado. Se define en la sentencia y se sujeta a regulación judicial, así que no conviene contar con ello al presupuestar el caso.",
+      },
+    ],
+  },
 ];
 
 export const ciudades = paginas.filter((p) => p.tipo === "ciudad");

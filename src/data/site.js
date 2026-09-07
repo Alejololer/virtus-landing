@@ -65,6 +65,17 @@ export const navLinks = [
 
 export const ORG_ID = `${SITE}/#estudio`;
 
+/* Perfiles oficiales. Alimentan sameAs: es lo que permite a buscadores y
+   asistentes confirmar que el sitio, la ficha de Maps y las redes son la
+   misma entidad. Formas canonicas verificadas, sin parametros de sesion. */
+export const PROFILES = [
+  "https://maps.google.com/?cid=13597386254876816219",
+  "https://www.facebook.com/people/Virtus-Estudio-Jur%C3%ADdico/61589164015302/",
+  "https://www.instagram.com/virtuslegal.ec/",
+  "https://www.tiktok.com/@virtus.abogados",
+  "https://www.linkedin.com/company/virtus-estudio-jur%C3%ADdico/",
+];
+
 /* Un solo @graph por página: negocio + sitio + página + migas + FAQ. */
 export function buildSchema({ path = "/", title, description, faq = [], breadcrumb = [], extra = [] }) {
   const url = `${SITE}${path}`;
@@ -76,6 +87,7 @@ export function buildSchema({ path = "/", title, description, faq = [], breadcru
       description:
         "Estudio jurídico en Salcedo, Cotopaxi. Asesoría, prevención y patrocinio legal en materia civil, penal, laboral, familiar, corporativa y digital.",
       url: SITE,
+      sameAs: PROFILES,
       logo: `${SITE}/logo-virtus.jpg`,
       image: `${SITE}/og.jpg`,
       telephone: PHONE,
