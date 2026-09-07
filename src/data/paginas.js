@@ -113,6 +113,64 @@ export const paginas = [
     ],
   },
   {
+    slug: "abogados-en-cotopaxi",
+    tipo: "ciudad",
+    ciudad: "Cotopaxi",
+    title: "Abogados en Cotopaxi — Virtus Estudio Jurídico",
+    description:
+      "Abogados en la provincia de Cotopaxi: Latacunga, Salcedo, Pujilí, Saquisilí, Sigchos, La Maná y Pangua. Penal, laboral, civil, familia y cobranzas. Urgencias 24/7.",
+    kicker: "PROVINCIA DE COTOPAXI",
+    h1: "Abogados en Cotopaxi",
+    intro:
+      "Patrocinamos casos en toda la provincia de Cotopaxi desde nuestra oficina en Salcedo, frente a la Unidad Judicial. Comparecemos habitualmente ante las judicaturas cantonales y ante la Corte Provincial de Justicia de Cotopaxi, en Latacunga.",
+    secciones: [
+      {
+        h2: "Cobertura en los siete cantones de la provincia",
+        p: [
+          "Cotopaxi tiene siete cantones y una realidad judicial repartida: las causas nacen en la judicatura del cantón y suben a Latacunga cuando hay apelación, recurso o competencia provincial. Atender un caso aquí exige moverse en ese circuito completo, no solo en una ciudad.",
+        ],
+        lista: [
+          "Latacunga — Corte Provincial, unidades judiciales y Fiscalía provincial.",
+          "Salcedo — nuestra oficina, frente a la Unidad Judicial.",
+          "Pujilí, Saquisilí y Sigchos — causas civiles, de familia, laborales y de tierras.",
+          "La Maná y Pangua — asuntos agrícolas, comerciales y de tránsito del subtrópico.",
+        ],
+      },
+      {
+        h2: "Las materias que más se litigan en Cotopaxi",
+        p: [
+          "La actividad agrícola, ganadera, florícola y comercial de la provincia genera conflictos recurrentes: contratos incumplidos, cartera vencida, linderos y posesión de terrenos, despidos y liquidaciones mal calculadas, pensiones alimenticias, sucesiones y defensa penal en tránsito y delitos contra la propiedad.",
+          "Cada una de esas materias tiene plazos propios y una vía —extrajudicial o judicial— que conviene definir antes de gastar dinero en un trámite. Eso es lo primero que se resuelve en la valoración del caso.",
+        ],
+      },
+      {
+        h2: "Cómo atendemos un caso fuera de Salcedo",
+        p: [
+          "La coordinación inicial es por WhatsApp: usted envía los documentos, los revisamos y le decimos si hace falta reunión presencial o si el asunto avanza a distancia. El abogado responsable comparece a las audiencias en el cantón que corresponda; usted asiste solo cuando su presencia es legalmente necesaria.",
+          "Las urgencias —detenciones, flagrancias, audiencias inmediatas o medidas cautelares— se atienden 24/7 en toda la provincia.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "¿Atienden casos fuera de Salcedo y Latacunga?",
+        a: "Sí. Patrocinamos causas en los siete cantones de Cotopaxi —Latacunga, Salcedo, Pujilí, Saquisilí, Sigchos, La Maná y Pangua— y también a nivel nacional. La oficina está en Salcedo, frente a la Judicatura.",
+      },
+      {
+        q: "¿Cobran movilización si el caso es en otro cantón?",
+        a: "Los honorarios y cualquier gasto de comparecencia se fijan por escrito antes de iniciar el trámite, según la materia y la complejidad. Nunca se acuerdan después de empezado el proceso.",
+      },
+      {
+        q: "¿Puedo llevar mi caso sin viajar a la oficina?",
+        a: "En la mayoría de asuntos sí. La documentación se revisa por WhatsApp o correo y el abogado comparece por usted; la reunión presencial se agenda solo cuando el caso lo amerita.",
+      },
+      {
+        q: "¿Ante qué judicatura se tramita mi caso?",
+        a: "Depende de la materia, la cuantía y el domicilio de las partes. En la valoración inicial le indicamos ante qué unidad judicial se radica y qué plazos corren desde ese momento.",
+      },
+    ],
+  },
+  {
     slug: "abogados-en-ambato",
     tipo: "ciudad",
     ciudad: "Ambato",
@@ -445,7 +503,355 @@ export const paginas = [
       },
     ],
   },
+  {
+    slug: "cobrar-letra-de-cambio-o-pagare",
+    tipo: "guia",
+    materia: "el cobro de letras de cambio y pagarés",
+    relacionadas: ["cobro-de-deudas", "derecho-civil-y-contratos", "abogados-en-salcedo"],
+    title: "Cómo cobrar una letra de cambio o pagaré impago en Ecuador",
+    description:
+      "Guía práctica: qué hace ejecutable una letra de cambio o un pagaré, cómo se demanda el cobro, qué bienes se pueden retener y en cuánto tiempo prescribe la acción.",
+    kicker: "GUÍA · COBRANZAS",
+    h1: "Cómo cobrar una letra de cambio o pagaré impago",
+    intro:
+      "Una letra de cambio o un pagaré bien emitidos son títulos ejecutivos: permiten demandar el pago sin tener que probar primero que la deuda existe. Esa es toda su ventaja, y también su límite, porque un defecto de forma la hace perder.",
+    secciones: [
+      {
+        h2: "Primero: revisar si el documento sigue siendo ejecutivo",
+        p: [
+          "Antes de demandar hay que verificar que el título reúna los requisitos formales que exige la ley: la denominación del documento, la orden o promesa incondicional de pagar una suma determinada, el nombre del deudor, la fecha de vencimiento, el lugar de emisión y la firma de quien se obliga. Falta uno y el documento deja de valer como título ejecutivo.",
+          "Eso no significa que la deuda se pierda. Cambia la vía: en lugar del procedimiento ejecutivo habrá que usar el monitorio, previsto para deudas de dinero determinadas que no constan en título ejecutivo, o la vía ordinaria según la cuantía y la prueba disponible.",
+        ],
+      },
+      {
+        h2: "Segundo: el procedimiento ejecutivo y las medidas cautelares",
+        p: [
+          "Con el título en regla se presenta la demanda ejecutiva ante la unidad judicial competente. Lo relevante en la práctica no es la sentencia, sino lo que se puede pedir desde el inicio: medidas cautelares sobre el patrimonio del deudor.",
+        ],
+        lista: [
+          "Retención de cuentas bancarias del deudor.",
+          "Prohibición de enajenar bienes inmuebles inscritos a su nombre.",
+          "Secuestro o embargo de vehículos y bienes muebles.",
+          "Inscripción de la medida en el Registro de la Propiedad correspondiente.",
+        ],
+      },
+      {
+        h2: "Tercero: el plazo, que es lo que más deudas mata",
+        p: [
+          "La acción cambiaria contra el deudor principal prescribe a los tres años contados desde el vencimiento del título. Vencido ese plazo el documento no desaparece, pero pierde su fuerza ejecutiva y el cobro se vuelve mucho más difícil y más caro.",
+          "Por eso la primera pregunta útil no es cuánto se debe, sino desde cuándo. Si su letra está próxima a los tres años, la gestión deja de ser una decisión comercial y pasa a ser urgente.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "¿Sirve una letra de cambio firmada solo entre particulares, sin notario?",
+        a: "Sí. La letra de cambio y el pagaré no requieren intervención notarial para ser títulos ejecutivos; lo que exigen son los requisitos formales del documento y la firma del obligado. La notarización ayuda a la prueba de la firma, pero no es condición de validez.",
+      },
+      {
+        q: "El deudor dice que no tiene bienes. ¿Vale la pena demandar?",
+        a: "Antes de demandar se hace una búsqueda patrimonial: Registro de la Propiedad, matriculación vehicular, cuentas y relación de dependencia. Si no aparece nada, se lo decimos con franqueza en lugar de cobrarle un juicio que no va a recuperar nada.",
+      },
+      {
+        q: "¿Puedo cobrar intereses además del capital?",
+        a: "Sí, dentro de los límites de la tasa máxima convencional fijada por el Banco Central. Los intereses que excedan ese tope no son exigibles, y pactarlos puede afectar el reclamo.",
+      },
+      {
+        q: "¿Cuánto se demora un juicio ejecutivo?",
+        a: "Depende de la carga de la judicatura, de si el deudor comparece y de si plantea excepciones. Lo que sí se puede acelerar es lo importante: las medidas cautelares se solicitan al inicio, no al final.",
+      },
+    ],
+  },
+  {
+    slug: "despido-intempestivo-que-hacer",
+    tipo: "guia",
+    materia: "el despido intempestivo y la liquidación",
+    relacionadas: ["abogado-laboral", "abogados-en-salcedo", "abogados-en-latacunga"],
+    title: "Despido intempestivo: qué hacer y cómo se calcula la liquidación",
+    description:
+      "Qué cuenta como despido intempestivo en Ecuador, qué rubros debe incluir la liquidación, por qué firmar un finiquito mal hecho no cierra el reclamo y en qué plazo prescribe.",
+    kicker: "GUÍA · LABORAL",
+    h1: "Despido intempestivo: qué hacer",
+    intro:
+      "Un despido intempestivo es la terminación unilateral de la relación laboral por decisión del empleador, sin que exista una causa legal calificada por un inspector del trabajo. No deja de serlo porque le digan que no hay más trabajo o porque le pidan renunciar.",
+    secciones: [
+      {
+        h2: "Qué le corresponde y qué suelen dejar fuera",
+        p: [
+          "La liquidación de un despido intempestivo tiene dos capas que conviene no confundir: lo que se le debe por haber trabajado, y la indemnización por la forma en que terminó la relación.",
+        ],
+        lista: [
+          "Remuneraciones pendientes y proporcionales del período trabajado.",
+          "Décimo tercera y décimo cuarta remuneración proporcionales.",
+          "Vacaciones no gozadas.",
+          "Fondos de reserva no pagados ni depositados.",
+          "Indemnización por despido intempestivo, calculada según el tiempo de servicio.",
+          "Bonificación por desahucio, cuando corresponde a la forma de terminación.",
+        ],
+      },
+      {
+        h2: "El acta de finiquito: firmar no siempre cierra el asunto",
+        p: [
+          "El acta de finiquito debe ser pormenorizada, es decir, detallar rubro por rubro cómo se calculó cada valor, y suscribirse ante la autoridad del trabajo. Un finiquito que solo consigna un total global, o que se firmó bajo presión y sin detalle, no libera necesariamente al empleador de las diferencias.",
+          "Si ya firmó, no asuma que perdió el derecho. Traiga el documento: lo primero que revisamos es si el cálculo corresponde a lo que la ley manda.",
+        ],
+      },
+      {
+        h2: "Casos donde el despido es además ineficaz",
+        p: [
+          "Hay despidos que la ley trata con especial severidad, como el de una mujer embarazada o en período de lactancia, o el de un dirigente sindical amparado por fuero. En esos supuestos no se habla solo de indemnización: se puede pedir la declaratoria de ineficacia del despido, con reintegro al puesto y pago de las remuneraciones dejadas de percibir.",
+          "Son acciones con plazos cortos y propios. Si su caso encaja aquí, la consulta no puede esperar semanas.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Renuncié porque me presionaron. ¿Cuenta como despido?",
+        a: "Puede configurarse un despido indirecto si la renuncia fue provocada por el empleador mediante hostigamiento, cambio unilateral de condiciones o falta de pago. Es una alegación que exige prueba, y por eso importa conservar mensajes, correos y testigos desde el primer día.",
+      },
+      {
+        q: "¿Hasta cuándo puedo reclamar?",
+        a: "Las acciones laborales provenientes del contrato de trabajo prescriben en tres años. Es un plazo largo comparado con otras materias, pero la prueba se deteriora mucho antes: los testigos cambian de trabajo y los registros se pierden.",
+      },
+      {
+        q: "Trabajaba sin contrato escrito. ¿Tengo derechos igual?",
+        a: "Sí. La relación laboral se prueba por los hechos, no por el papel: horario, subordinación, pago periódico, herramientas provistas por el empleador. La ausencia de contrato escrito perjudica al empleador, no al trabajador.",
+      },
+      {
+        q: "¿Tengo que ir a juicio o se puede negociar?",
+        a: "Buena parte de estos casos se cierra en acuerdo, con la diferencia de que el acuerdo se negocia sabiendo exactamente cuánto ordenaría pagar un juez. Sin ese cálculo previo, se negocia a ciegas.",
+      },
+    ],
+  },
+  {
+    slug: "divorcio-por-mutuo-consentimiento",
+    tipo: "guia",
+    materia: "el divorcio por mutuo consentimiento",
+    relacionadas: ["derecho-de-familia", "abogados-en-salcedo", "abogados-en-latacunga"],
+    title: "Divorcio por mutuo consentimiento en Ecuador: vías y requisitos",
+    description:
+      "Cuándo el divorcio de mutuo acuerdo puede hacerse ante notario y cuándo debe ir a la unidad judicial de familia, qué documentos se necesitan y cómo quedan los hijos y los bienes.",
+    kicker: "GUÍA · FAMILIA",
+    h1: "Divorcio por mutuo consentimiento",
+    intro:
+      "Cuando ambos cónyuges están de acuerdo en terminar el matrimonio, el trámite deja de ser un litigio y pasa a ser un procedimiento. La pregunta que define todo lo demás es si hay hijos menores de edad o bajo dependencia.",
+    secciones: [
+      {
+        h2: "Sin hijos dependientes: vía notarial",
+        p: [
+          "Si no hay hijos menores de edad ni bajo dependencia, el divorcio de mutuo consentimiento puede tramitarse ante notario. Es la vía más corta: se presenta la solicitud conjunta con los documentos de identidad y la partida de matrimonio, el notario señala una audiencia breve y, ratificada la voluntad de ambos, otorga la escritura que luego se margina en el Registro Civil.",
+          "El divorcio no queda perfeccionado con la firma, sino con esa inscripción marginal. Es el paso que más se olvida y el que hace falta para cualquier trámite posterior.",
+        ],
+      },
+      {
+        h2: "Con hijos menores o dependientes: unidad judicial de familia",
+        p: [
+          "Cuando hay hijos menores de edad o bajo dependencia, el acuerdo de los padres no basta por sí solo: un juez debe revisar y aprobar lo que se resuelva sobre tenencia, régimen de visitas y pensión alimenticia, porque son derechos del niño y no de los padres.",
+          "En la práctica esto no convierte el trámite en un pleito. Si los cónyuges llegan con un acuerdo razonable y completo sobre los tres puntos, la causa avanza rápido y el juez se limita a verificar que no perjudique al menor.",
+        ],
+      },
+      {
+        h2: "Los bienes: lo que el divorcio no resuelve solo",
+        p: [
+          "Disolver el matrimonio y liquidar la sociedad conyugal son dos cosas distintas. Muchos divorcios terminan inscritos con los bienes todavía en común, y el problema reaparece años después, cuando alguien quiere vender o cuando fallece uno de los excónyuges.",
+          "Si hay inmuebles, vehículos, cuentas o un negocio de por medio, conviene resolver la liquidación en el mismo momento y no dejarla pendiente.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "¿Necesitamos un abogado cada uno?",
+        a: "En el mutuo consentimiento puede actuar un solo patrocinio para la solicitud conjunta, siempre que el acuerdo sea genuino y no haya intereses contrapuestos. Cuando hay bienes de peso o desacuerdo sobre los hijos, lo prudente es que cada parte tenga su propio abogado.",
+      },
+      {
+        q: "Mi cónyuge está fuera del país. ¿Se puede igual?",
+        a: "Sí. Puede otorgar un poder especial ante el consulado ecuatoriano del lugar donde reside, o comparecer por medios telemáticos según el caso. La distancia complica la logística, no el derecho.",
+      },
+      {
+        q: "¿Cuánto se demora?",
+        a: "La vía notarial se resuelve en cuestión de días una vez reunidos los documentos. La vía judicial depende de la agenda de la unidad judicial y de si el acuerdo llega completo; venir con la propuesta ya cerrada es lo que más acorta el trámite.",
+      },
+      {
+        q: "¿La pensión acordada se puede cambiar después?",
+        a: "Sí. La pensión alimenticia es revisable cuando cambian las necesidades del hijo o la capacidad económica del obligado. Lo acordado hoy no queda congelado para siempre.",
+      },
+    ],
+  },
+  {
+    slug: "pension-alimenticia-como-se-fija",
+    tipo: "guia",
+    materia: "la pensión alimenticia",
+    relacionadas: ["derecho-de-familia", "abogados-en-salcedo", "abogados-en-cotopaxi"],
+    title: "Pensión alimenticia en Ecuador: cómo se fija, se cobra y se revisa",
+    description:
+      "Cómo se calcula la pensión alimenticia según la tabla vigente, desde cuándo se debe, qué pasa si el obligado no paga y cómo se pide aumento o rebaja del monto.",
+    kicker: "GUÍA · FAMILIA",
+    h1: "Pensión alimenticia: cómo se fija y se cobra",
+    intro:
+      "La pensión alimenticia no se negocia entre adultos en el vacío: parte de una tabla oficial de mínimos que se actualiza cada año y que combina los ingresos del obligado con el número de hijos que dependen de él.",
+    secciones: [
+      {
+        h2: "Cómo se llega al monto",
+        p: [
+          "El juez toma como piso la Tabla de Pensiones Alimenticias Mínimas vigente, que fija un porcentaje del ingreso según el nivel de ingresos del obligado y la cantidad de derechohabientes. Ese es el mínimo, no el techo.",
+          "Sobre ese piso se consideran las necesidades reales del hijo —educación, salud, vivienda, cuidado— y la capacidad efectiva del obligado, que no siempre coincide con lo que declara. Cuando hay ingresos informales o subdeclarados, la prueba del nivel de vida pasa a ser central.",
+        ],
+      },
+      {
+        h2: "Desde cuándo se debe y qué pasa si no pagan",
+        p: [
+          "La pensión se debe desde la citación con la demanda, no desde la sentencia. Demorar la demanda es, en la práctica, regalar meses de pensión que ya no se recuperan.",
+        ],
+        lista: [
+          "Acumuladas dos pensiones impagas, procede solicitar apremio personal contra el obligado.",
+          "Se puede pedir retención directa sobre el rol de pagos del empleador.",
+          "Cabe la prohibición de salida del país mientras exista deuda pendiente.",
+          "El obligado moroso queda registrado, y ello afecta trámites y créditos.",
+        ],
+      },
+      {
+        h2: "Aumento, rebaja y extinción",
+        p: [
+          "El monto es revisable cuando cambian las circunstancias: si el hijo entra a una etapa educativa más costosa o aparece un gasto médico permanente, procede el aumento; si el obligado pierde el trabajo o nace otro hijo a su cargo, procede la rebaja. Ninguna de las dos opera sola: hay que pedirla y probarla.",
+          "La obligación tampoco termina automáticamente a los dieciocho años. Se extiende mientras el hijo curse estudios superiores en las condiciones que la ley prevé, y en casos de discapacidad puede prolongarse más allá.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "El padre trabaja sin contrato y dice no tener ingresos. ¿Qué se puede hacer?",
+        a: "Se prueba el nivel de vida por otros medios: bienes a su nombre, movimientos, actividad comercial visible, gastos. La informalidad dificulta la prueba, no exime de la obligación.",
+      },
+      {
+        q: "¿Puedo pedir pensión si nunca hubo matrimonio?",
+        a: "Sí. La obligación alimenticia nace de la filiación, no del matrimonio. Si la paternidad no está reconocida, se tramita conjuntamente con la declaratoria correspondiente.",
+      },
+      {
+        q: "Pago la pensión pero no me dejan ver a mi hijo. ¿Puedo suspender el pago?",
+        a: "No. Alimentos y régimen de visitas son obligaciones independientes: dejar de pagar no le da acceso al hijo y sí lo expone a apremio. Lo que corresponde es exigir judicialmente el cumplimiento del régimen de visitas.",
+      },
+      {
+        q: "¿Se puede acordar la pensión sin ir a juicio?",
+        a: "Se puede acordar, pero conviene que el acuerdo quede formalizado y aprobado, no en un chat. Un acuerdo informal no es ejecutable, y cuando se incumple hay que empezar el trámite desde cero.",
+      },
+    ],
+  },
+  {
+    slug: "detencion-en-flagrancia-primeras-24-horas",
+    tipo: "guia",
+    materia: "la detención en flagrancia",
+    relacionadas: ["abogado-penalista", "abogados-en-salcedo", "abogados-en-latacunga"],
+    title: "Detención en flagrancia: qué hacer en las primeras 24 horas",
+    description:
+      "Qué derechos tiene una persona detenida en Ecuador, qué ocurre en la audiencia de calificación de flagrancia y qué decisiones de las primeras horas condicionan todo el proceso penal.",
+    kicker: "GUÍA · PENAL",
+    h1: "Detención en flagrancia: las primeras 24 horas",
+    intro:
+      "En una detención por flagrancia todo el proceso se define muy temprano. La ley obliga a que la persona detenida sea puesta ante un juez dentro de las veinticuatro horas siguientes, y lo que se haga o se deje de hacer en ese lapso pesa hasta el final de la causa.",
+    secciones: [
+      {
+        h2: "Los derechos que rigen desde el primer minuto",
+        p: [
+          "No son formalidades: su vulneración puede afectar la validez de lo actuado.",
+        ],
+        lista: [
+          "Conocer de forma clara los motivos de la detención y la autoridad que la ordenó o ejecutó.",
+          "Guardar silencio. Nadie está obligado a declarar contra sí mismo ni a autoincriminarse.",
+          "Contar con abogado defensor desde el inicio, privado o de la Defensoría Pública.",
+          "Comunicarse con un familiar o con la persona que indique.",
+          "No ser sometido a tratos que menoscaben su dignidad ni a interrogatorios sin defensa presente.",
+        ],
+      },
+      {
+        h2: "Qué ocurre en la audiencia de calificación de flagrancia",
+        p: [
+          "Ante el juez se resuelven, en una sola audiencia, tres cosas: si la detención fue legal, si la Fiscalía formula cargos y da inicio a la instrucción, y qué medida cautelar se aplica mientras dura el proceso.",
+          "Ese tercer punto es el que cambia la vida del detenido en lo inmediato: prisión preventiva, o medidas alternativas como presentación periódica, prohibición de salida del país o arresto domiciliario. Llegar a esa audiencia con documentación de arraigo —domicilio, trabajo, cargas familiares— es lo que permite discutirlo en serio.",
+        ],
+      },
+      {
+        h2: "El error más caro: esperar",
+        p: [
+          "La familia suele perder las primeras horas averiguando dónde está el detenido y qué se puede hacer. Ese es justamente el tiempo en que un defensor debería estar reuniendo el arraigo, revisando el parte policial y preparando la audiencia.",
+          "Por eso atendemos urgencias las veinticuatro horas. Cuando la llamada llega al día siguiente, muchas veces la medida cautelar ya está dictada y revertirla cuesta mucho más.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "¿Qué debe hacer la familia apenas se entera?",
+        a: "Ubicar dónde está el detenido y ante qué unidad se lo procesa, no permitir que declare sin defensa, y reunir de inmediato la documentación de arraigo: cédula, certificado de trabajo o de actividad, planilla de servicios del domicilio, partidas de nacimiento de hijos y certificados médicos si los hay.",
+      },
+      {
+        q: "¿Conviene declarar para aclarar las cosas?",
+        a: "No antes de hablar con su defensor. Una versión dada sin conocer el contenido del parte policial y de los elementos de la Fiscalía suele terminar usada en contra, incluso cuando se dice la verdad.",
+      },
+      {
+        q: "¿Siempre se dicta prisión preventiva?",
+        a: "No. Es una medida excepcional que exige que se justifiquen sus presupuestos y que otras medidas resulten insuficientes. Precisamente por eso el arraigo y la contradicción en la audiencia importan tanto.",
+      },
+      {
+        q: "¿Qué es el procedimiento directo?",
+        a: "Es una vía abreviada aplicable a ciertos delitos flagrantes de menor pena, en la que el juicio se realiza en pocos días. Da rapidez, pero también acorta drásticamente el tiempo para preparar la defensa: aceptarlo o discutirlo es una decisión estratégica, no automática.",
+      },
+    ],
+  },
+  {
+    slug: "posesion-efectiva-y-particion-de-herencia",
+    tipo: "guia",
+    materia: "la posesión efectiva y la partición de herencia",
+    relacionadas: ["derecho-de-familia", "derecho-civil-y-contratos", "abogados-en-cotopaxi"],
+    title: "Posesión efectiva y partición de herencia: pasos y plazos",
+    description:
+      "Cómo se tramita la posesión efectiva en Ecuador por vía notarial o judicial, qué se declara ante el SRI y cómo se reparten los bienes cuando los herederos no se ponen de acuerdo.",
+    kicker: "GUÍA · SUCESIONES",
+    h1: "Posesión efectiva y partición de herencia",
+    intro:
+      "Heredar no equivale a poder disponer. Mientras no se tramite la posesión efectiva y se inscriba donde corresponde, los bienes del causante siguen figurando a su nombre y ningún heredero puede venderlos, hipotecarlos ni transferirlos.",
+    secciones: [
+      {
+        h2: "Paso uno: la posesión efectiva",
+        p: [
+          "Es el acto por el cual se reconoce quiénes son los herederos del causante. Cuando todos están de acuerdo y no hay controversia sobre la calidad de heredero, se tramita ante notario, que es la vía más rápida. Si hay desacuerdo, herederos ausentes o dudas sobre la filiación, corresponde la vía judicial.",
+          "Se necesita la partida de defunción, la documentación que acredite el vínculo de cada heredero y el detalle de los bienes. Otorgada la posesión efectiva, debe inscribirse en el Registro de la Propiedad del cantón donde estén los inmuebles.",
+        ],
+      },
+      {
+        h2: "Paso dos: la declaración ante el SRI",
+        p: [
+          "La sucesión genera una obligación tributaria que debe declararse ante el Servicio de Rentas Internas dentro del plazo previsto. Presentarla tarde acarrea intereses y multas que se descuentan del propio patrimonio heredado.",
+          "Es el punto donde más trámites se traban: sin el cumplimiento tributario acreditado, el registro no inscribe y la herencia queda a medio camino.",
+        ],
+      },
+      {
+        h2: "Paso tres: la partición, que es donde suele romperse todo",
+        p: [
+          "Con la posesión efectiva inscrita, los herederos son dueños en común de todos los bienes. Eso funciona en el papel y falla en la práctica: nadie puede vender su parte de una casa sin el resto, y basta un heredero que se oponga para paralizar el patrimonio entero.",
+          "La partición se puede hacer por acuerdo, mediante escritura pública, o por vía judicial cuando no hay consenso. El acuerdo siempre sale más barato y más rápido; el juicio de partición existe justamente para cuando el acuerdo ya no es posible.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "¿Hay plazo para tramitar la posesión efectiva?",
+        a: "El reconocimiento de la calidad de heredero no caduca, pero la obligación tributaria sí tiene plazo y genera recargos. Además, cada año que pasa suma complicaciones: herederos que fallecen, documentos que se pierden y posesiones de terceros sobre los bienes.",
+      },
+      {
+        q: "Un heredero no quiere firmar nada. ¿Qué se hace?",
+        a: "Se acude a la vía judicial. Ni la posesión efectiva ni la partición dependen de la voluntad unánime: la negativa de uno obliga a judicializar, pero no bloquea el derecho de los demás.",
+      },
+      {
+        q: "¿El cónyuge sobreviviente hereda?",
+        a: "El cónyuge tiene derechos en la sucesión, además de la mitad que le corresponde por la disolución de la sociedad conyugal, que no es herencia sino patrimonio propio. Distinguir ambas cosas es lo primero que se ordena en el trámite.",
+      },
+      {
+        q: "¿Se puede vender la casa antes de la partición?",
+        a: "Solo con el acuerdo de todos los herederos y con la posesión efectiva ya inscrita. Vender la cuota individual es posible en teoría, pero en la práctica casi nadie compra una parte indivisa.",
+      },
+    ],
+  },
 ];
 
 export const ciudades = paginas.filter((p) => p.tipo === "ciudad");
 export const materias = paginas.filter((p) => p.tipo === "materia");
+export const guias = paginas.filter((p) => p.tipo === "guia");

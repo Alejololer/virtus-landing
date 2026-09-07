@@ -16,8 +16,14 @@ const mensaje =
     : `Hola, necesito asesoría en ${pagina.materia}.`;
 const WA_PAGINA = wa(mensaje);
 
-// enlaces internos: las otras páginas del mismo tipo + las del otro tipo
-const relacionadas = paginas.filter((p) => p.slug !== pagina.slug).slice(0, 6);
+// enlaces internos: las que la página declare como preferentes, luego el resto
+const preferidas = (pagina.relacionadas ?? [])
+  .map((s) => paginas.find((p) => p.slug === s))
+  .filter(Boolean);
+const relacionadas = [
+  ...preferidas,
+  ...paginas.filter((p) => p.slug !== pagina.slug && !preferidas.includes(p)),
+].slice(0, 6);
 
 const extraSchema =
   pagina.tipo === "materia"
@@ -137,7 +143,7 @@ const extraSchema =
           <div class="info-label">También le puede interesar</div>
           <div class="related-grid">
             {relacionadas.map((r) => (
-              <a href={`/${r.slug}`}>{r.tipo === "ciudad" ? r.h1 : r.materia}</a>
+              <a href={`/${r.slug}`}>{r.tipo === "materia" ? r.materia : r.h1}</a>
             ))}
           </div>
         </div>

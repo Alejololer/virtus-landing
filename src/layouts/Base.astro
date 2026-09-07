@@ -2,7 +2,7 @@
 import {
   SITE, NAME, PHONE, PHONE_HUMAN, WA_GENERAL, navLinks, buildSchema,
 } from "../data/site.js";
-import { ciudades, materias } from "../data/paginas.js";
+import { ciudades, materias, guias } from "../data/paginas.js";
 
 const {
   title,
@@ -102,6 +102,12 @@ const jsonLd = buildSchema({ path, title, description, faq, breadcrumb, extra: e
         <div class="footer-label">Áreas de práctica</div>
         <ul>
           {materias.map((m) => <li><a href={`/${m.slug}`}>{m.materia}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <div class="footer-label">Guías legales</div>
+        <ul>
+          {guias.map((g) => <li><a href={`/${g.slug}`}>{g.h1}</a></li>)}
         </ul>
       </div>
       <div>
@@ -482,7 +488,7 @@ const jsonLd = buildSchema({ path, title, description, faq, breadcrumb, extra: e
       .faq-section { padding: 84px 0; }
       .faq-h2 { font-size: 34px; }
       .related-grid { grid-template-columns: repeat(3, 1fr); }
-      .footer-nav { grid-template-columns: repeat(3, 1fr); gap: 54px; padding: 44px 32px 34px; }
+      .footer-nav { grid-template-columns: repeat(4, 1fr); gap: 40px; padding: 44px 32px 34px; }
 
     }
   </style>
