@@ -526,7 +526,8 @@ export const paginas = [
       {
         h2: "Segundo: el procedimiento ejecutivo y las medidas cautelares",
         p: [
-          "Con el título en regla se presenta la demanda ejecutiva ante la unidad judicial competente. Lo relevante en la práctica no es la sentencia, sino lo que se puede pedir desde el inicio: medidas cautelares sobre el patrimonio del deudor.",
+          "Con el título en regla se presenta la demanda ejecutiva ante la unidad judicial competente. Calificada la demanda, el juez ordena al deudor pagar o proponer excepciones dentro del término de quince días contados desde la citación; si no lo hace, o si sus excepciones no prosperan, se dicta sentencia y se pasa a la ejecución.",
+          "Lo relevante en la práctica no es la sentencia, sino lo que se puede pedir desde el inicio: medidas cautelares sobre el patrimonio del deudor.",
         ],
         lista: [
           "Retención de cuentas bancarias del deudor.",
@@ -1017,6 +1018,17 @@ export const paginas = [
         p: [
           "Es la confusión más frecuente y la que genera más malentendidos a mitad de un proceso. El honorario retribuye el trabajo profesional del abogado. Los gastos procesales son desembolsos a terceros que existen aunque el abogado no cobrara nada: tasas judiciales y notariales, certificados de registros, honorarios de peritos, publicaciones, copias certificadas.",
           "Un presupuesto serio distingue ambas cosas desde el inicio y aclara cuáles se anticipan y cuáles se liquidan contra comprobante. Cuando todo se presenta como una cifra global indivisible, el cliente no tiene forma de saber qué está pagando.",
+        ],
+      },
+      {
+        h2: "Las tres modalidades de cobro que se usan en Ecuador",
+        p: [
+          "Más allá del monto, lo que conviene entender es la estructura, porque determina quién asume el riesgo del resultado. En la práctica se usan tres:",
+        ],
+        lista: [
+          "Cuota litis: el abogado percibe un porcentaje de lo que efectivamente se recupere, y cobra poco o nada al inicio. Es habitual en cobranzas y en reclamaciones patrimoniales, porque alinea el interés de las dos partes; a cambio, el cliente cede parte de lo recuperado.",
+          "Honorario fijo: un valor cerrado por el encargo, con alcance definido. Es lo que suele preferir quien no quiere ceder un porcentaje, y también la empresa que necesita presupuestar el gasto por anticipado.",
+          "Modalidad mixta: un anticipo que cubre el inicio del proceso y los trámites, más un porcentaje menor sobre el resultado. Reparte el riesgo entre ambas partes y es la fórmula más frecuente cuando el caso es largo.",
         ],
       },
       {
