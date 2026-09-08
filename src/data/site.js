@@ -42,10 +42,10 @@ export const services = [
 export const SERVICES_INITIAL = 8;
 
 export const team = [
-  { name: "Juan Semblantes", slug: "semblantes", focus: "Derecho Procesal, Laboral, Protección de Datos y Derecho Digital." },
-  { name: "Vinicio Ortiz", slug: "ortiz", focus: "Derecho Penal, Litigios y Derecho Laboral, con enfoque en defensa y patrocinio judicial." },
-  { name: "Aylin Constante", slug: "constante", focus: "Propiedad Intelectual, Marcas y Derecho Internacional, con experiencia en asesoría a clientes extranjeros." },
-  { name: "Hernán Naranjo", slug: "naranjo", focus: "Derecho Civil, Contratos, Derecho Administrativo y asuntos patrimoniales." },
+  { name: "Juan Semblantes", slug: "semblantes", foto: "/fotos/abogado-juan-semblantes-salcedo.webp", focus: "Derecho Procesal, Laboral, Protección de Datos y Derecho Digital." },
+  { name: "Vinicio Ortiz", slug: "ortiz", foto: "/fotos/abogado-vinicio-ortiz-salcedo.webp", focus: "Derecho Penal, Litigios y Derecho Laboral, con enfoque en defensa y patrocinio judicial." },
+  { name: "Aylin Constante", slug: "constante", foto: "/fotos/abogada-aylin-constante-salcedo.webp", focus: "Propiedad Intelectual, Marcas y Derecho Internacional, con experiencia en asesoría a clientes extranjeros." },
+  { name: "Hernán Naranjo", slug: "naranjo", foto: "/fotos/abogado-hernan-naranjo-salcedo.webp", focus: "Derecho Civil, Contratos, Derecho Administrativo y asuntos patrimoniales." },
 ];
 
 export const clients = [
@@ -141,6 +141,7 @@ export function buildSchema({ path = "/", title, description, faq = [], breadcru
         "@type": "Person",
         name: m.name,
         jobTitle: "Abogado",
+        image: `${SITE}${m.foto}`,
         knowsAbout: m.focus,
         worksFor: { "@id": ORG_ID },
       })),

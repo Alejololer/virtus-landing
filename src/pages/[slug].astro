@@ -78,6 +78,10 @@ const extraSchema =
 
     <article class="prose">
       <div class="wrap">
+        {pagina.foto && (
+          <img src={pagina.foto.src} width={pagina.foto.w} height={pagina.foto.h}
+            alt={pagina.foto.alt} class="prose-foto" loading="lazy" decoding="async" />
+        )}
         {pagina.secciones.map((s) => (
           <section class="prose-block">
             <h2>{s.h2}</h2>

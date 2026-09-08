@@ -50,10 +50,9 @@ const faq = [
       </div>
       <div class="hero-img-wrap">
         <div class="hero-img-frame" aria-hidden="true"></div>
-        <img src="https://images.pexels.com/photos/7875863/pexels-photo-7875863.jpeg?auto=compress&cs=tinysrgb&w=1400"
-          srcset="https://images.pexels.com/photos/7875863/pexels-photo-7875863.jpeg?auto=compress&cs=tinysrgb&w=700 700w, https://images.pexels.com/photos/7875863/pexels-photo-7875863.jpeg?auto=compress&cs=tinysrgb&w=1000 1000w, https://images.pexels.com/photos/7875863/pexels-photo-7875863.jpeg?auto=compress&cs=tinysrgb&w=1400 1400w"
-          sizes="(min-width: 860px) 46vw, 100vw"
-          alt="Abogada de Virtus Estudio Jurídico revisando documentos legales" class="hero-img" fetchpriority="high" decoding="async" />
+        <img src="/fotos/oficina-virtus-salcedo-ventanal-amanecer.webp" width="896" height="1195"
+          alt="Oficina de Virtus Estudio Jurídico en Salcedo al amanecer, con el ventanal rotulado frente a la Judicatura"
+          class="hero-img" fetchpriority="high" decoding="async" />
       </div>
     </div>
   </section>
@@ -80,7 +79,7 @@ const faq = [
       <div>
         <span class="kicker">NUESTRO ENFOQUE</span>
         <div class="rule"></div>
-        <img src="https://images.pexels.com/photos/8439654/pexels-photo-8439654.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Asesoría legal a un cliente en Salcedo" class="enfoque-img" loading="lazy" decoding="async" />
+        <img src="/fotos/recepcion-virtus-estudio-juridico-salcedo.webp" width="1000" height="667" alt="Recepción y sala de espera de Virtus Estudio Jurídico en Salcedo, Cotopaxi" class="enfoque-img" loading="lazy" decoding="async" />
       </div>
       <div>
         <p class="enfoque-statement">Integramos distintas áreas del Derecho para brindar soluciones jurídicas coordinadas, estratégicas y adaptadas a las necesidades de cada cliente.</p>
@@ -126,7 +125,7 @@ const faq = [
   </section>
 
   <section class="quote">
-    <img src="https://images.pexels.com/photos/5668882/pexels-photo-5668882.jpeg?auto=compress&cs=tinysrgb&w=1900" alt="Balanza de la justicia y mazo sobre libros de derecho" class="quote-img" loading="lazy" decoding="async" />
+    <img src="/fotos/sala-de-trabajo-abogados-virtus-salcedo.webp" width="1195" height="896" alt="Sala de trabajo del equipo de Virtus Estudio Jurídico en Salcedo" class="quote-img" loading="lazy" decoding="async" />
     <div class="quote-overlay" aria-hidden="true"></div>
     <div class="wrap quote-content">
       <div class="rule rule-gold"></div>
@@ -143,9 +142,8 @@ const faq = [
       <div class="team-grid">
         {team.map((m) => (
           <div class="team-card">
-            <div class="team-portrait">
-              <span>retrato — {m.slug}.jpg</span>
-            </div>
+            <img class="team-portrait" src={m.foto} width="600" height="800"
+              alt={`${m.name} — equipo de Virtus Estudio Jurídico en Salcedo`} loading="lazy" decoding="async" />
             <div class="team-info">
               <h3>{m.name}</h3>
               <div class="rule rule-gold rule-small"></div>
@@ -163,7 +161,7 @@ const faq = [
         <span class="kicker">CLIENTES EMPRESARIALES</span>
         <div class="rule"></div>
         <p class="clientes-desc">Acompañamiento legal continuo a negocios de Salcedo y Latacunga en materia contractual, laboral, de cobranzas y de marcas.</p>
-        <img src="https://images.pexels.com/photos/8112180/pexels-photo-8112180.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Firma de un contrato empresarial con asesoría de Virtus" class="clientes-img" loading="lazy" decoding="async" />
+        <img src="/fotos/reunion-abogados-virtus-con-cliente.webp" width="896" height="597" alt="Abogados de Virtus Estudio Jurídico en reunión con un cliente empresarial en Salcedo" class="clientes-img" loading="lazy" decoding="async" />
       </div>
       <div class="clientes-list">
         {clients.map((c) => (

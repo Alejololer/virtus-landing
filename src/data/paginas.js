@@ -862,6 +862,11 @@ export const paginas = [
       "Qué hacer tras un accidente de tránsito en Ecuador, cuándo es contravención y cuándo delito, y qué se necesita para que liberen el vehículo de los patios de retención.",
     kicker: "GUÍA · TRÁNSITO",
     h1: "Accidente de tránsito y vehículo retenido",
+    foto: {
+      src: "/fotos/accidente-de-transito-abogados-virtus-en-el-lugar.webp",
+      w: 896, h: 597,
+      alt: "Abogados de Virtus Estudio Jurídico levantando información con la Policía en el lugar de un accidente de tránsito",
+    },
     intro:
       "Después de un accidente el vehículo casi siempre termina en los patios de retención, y cada día que pasa ahí cuesta dinero. Recuperarlo no depende de insistir en la ventanilla: depende de que se cumplan, en orden, los pasos que la ley exige.",
     secciones: [

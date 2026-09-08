@@ -54,7 +54,6 @@ const jsonLd = buildSchema({ path, title, description, faq, breadcrumb, extra: e
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
 
-  <link rel="preconnect" href="https://images.pexels.com" />
 
   <!-- ponytail: solo las dos fuentes above the fold; Mono carga sin preload -->
   <link rel="preload" href="/fonts/cinzel-400.woff2" as="font" type="font/woff2" crossorigin />
@@ -284,6 +283,9 @@ const jsonLd = buildSchema({ path, title, description, faq, breadcrumb, extra: e
     .hero-urgencias { margin: 18px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: rgba(217,178,106,0.85); }
     .hero-img-wrap { position: relative; margin-top: 26px; }
     .hero-img-frame { display: none; }
+    /* los atributos width/height de las fotos reservan espacio, pero su height
+       ganaria al aspect-ratio del CSS: height:auto devuelve el mando al ratio */
+    .hero-img, .enfoque-img, .clientes-img, .team-portrait, .prose-foto { height: auto; }
     .hero-img { width: 100%; display: block; aspect-ratio: 4/3; object-fit: cover; filter: saturate(0.72) contrast(1.05) brightness(0.95); }
 
     /* stats */
@@ -332,10 +334,9 @@ const jsonLd = buildSchema({ path, title, description, faq, breadcrumb, extra: e
     .team-grid { display: grid; gap: 30px; }
     .team-card { display: grid; grid-template-columns: 104px 1fr; gap: 18px; align-items: start; }
     .team-portrait {
-      aspect-ratio: 3/4; background: repeating-linear-gradient(135deg, rgba(217,178,106,0.14) 0 8px, rgba(217,178,106,0.05) 8px 16px);
-      border: 1px solid rgba(217,178,106,0.3); display: flex; align-items: flex-end; padding: 8px;
+      width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; object-position: center 20%;
+      border: 1px solid rgba(217,178,106,0.3); filter: saturate(0.75) contrast(1.05);
     }
-    .team-portrait span { font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 0.06em; color: rgba(251,249,246,0.5); }
     .team-info h3 { font-size: 19px; color: var(--gold-400); }
     .team-info p { font-size: 14px; line-height: 1.65; color: rgba(251,249,246,0.75); margin: 0; }
 
@@ -379,6 +380,7 @@ const jsonLd = buildSchema({ path, title, description, faq, breadcrumb, extra: e
     .page-hero h1 { font-size: 32px; line-height: 1.18; text-wrap: balance; }
 
     .prose { background: var(--cream-50); padding: 46px 0; }
+    .prose-foto { width: 100%; max-width: 42em; display: block; aspect-ratio: 3/2; object-fit: cover; filter: saturate(0.7) contrast(1.05); margin-bottom: 38px; }
     .prose-block { margin-bottom: 38px; }
     .prose-block:last-child { margin-bottom: 0; }
     .prose h2 { font-size: 23px; color: var(--maroon-700); margin: 0 0 14px; line-height: 1.3; }
@@ -499,8 +501,6 @@ const jsonLd = buildSchema({ path, title, description, faq, breadcrumb, extra: e
       .equipo-head h2 { font-size: 42px; }
       .team-grid { grid-template-columns: repeat(4, 1fr); gap: 34px; }
       .team-card { grid-template-columns: 1fr; }
-      .team-portrait { aspect-ratio: 3/4; padding: 16px; }
-      .team-portrait span { font-size: 10px; }
       .team-info h3 { margin-top: 24px; }
 
       .clientes { padding: 96px 0; }
